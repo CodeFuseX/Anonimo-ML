@@ -1,0 +1,154 @@
+html{
+    font-size: 62.5%;
+  }
+
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    color: black;
+    background: black;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    padding-top: 6rem;
+}
+
+header h1{
+    background-image: linear-gradient(to left,#264ed1,#2143b6) !important;
+  -webkit-background-clip: text !important;
+  color: transparent;
+}
+header .material-icons{
+    color: black;
+}
+.rss-page{
+    background: black;
+}
+.rss-title {
+    margin: 3rem;
+    border-bottom: 0.4rem solid linear-gradient(to left,#264ed1,#2143b6);
+    background-color: #ffff;
+}
+
+.rss-title span .fa fa-lightbulb-o {
+    color:#007bff;
+    font-size: 0.2rem;
+    font-weight: bold;
+}
+.fa fa-search{
+    font-family: 'Montserrat';
+}
+.rss-page {margin-bottom: 2rem;}
+
+
+h2{
+    background-image: linear-gradient(to left,#264ed1,#2143b6) !important;
+  -webkit-background-clip: text !important;
+  color: transparent;
+}
+
+
+
+
+.list-group-item { /*change this class name this is default of bootstrap*/
+    padding: 0.025rem 0.025rem;
+    margin-bottom: 0;
+    border: 0;
+    background: black;
+}
+.card-title{
+    font-size: 2rem;
+}
+.container {
+    margin-top: 7rem;
+    background: black;
+    
+}
+.card{
+    background-image: linear-gradient(to left,#1f212d,#2e2f42);
+    border: none !important;
+    background-color: transparent;
+    border-radius: 1.5rem;
+    min-height: 40rem;
+    width: 80%;
+    margin-left: 40%;
+}
+.card-body {
+    background: black;
+    border: none;
+    font-size: 1.5rem;
+}
+.card-body h5{
+    color: #007bff;
+}
+.card-body p{
+    color: gainsboro;
+}
+.rss-content {
+    padding: 1.5rem;
+    background: black;
+    border-radius: 0.5rem;
+    border: #0000;
+    
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius:1.5rem 1.5rem 0rem 0rem;
+}
+
+.wrapper:after {
+  content: '';
+  display: block;
+  padding-top: 75%;
+}
+
+.wrapper img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+
+.form-check { 
+    margin: -1rem;
+}
+.form-check p1{
+    background: #007bff;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+}
+.btn-primary{
+    background-image: linear-gradient(to left,#264ed1,#2143b6);
+    border-radius: 1rem;
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:500;
+}
+
+
+@media(max-width:998px){
+    html{
+      font-size:55%
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size:45%
+    }
+    .card{
+      background-image: linear-gradient(to left,#1f212d,#2e2f42);
+      border: none !important;
+      background-color: transparent;
+      border-radius: 1.5rem;
+      min-height: 40rem;
+      width: 60%;
+      margin-left: 20%;
+      margin-bottom: 2rem;
+  }
+  }

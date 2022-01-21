@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block anonympage %}active{% endblock anonympage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/anonym.css' %}">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<br><br><br><br><br>
+<style>
+.btn-primary:focus{
+  box-shadow: none !important;
+}
+</style>
+<center>
+  <figure>
+    <blockquote class="blockquote">
+      <p  style="font-size: 2rem; color: white;">Sharing your feelings with someone, is not a sign of weakness</p>
+    </blockquote>
+    <figcaption class="blockquote-footer " style="font-size: 1.5rem; color: #0070d1;">
+      <b>Anonimo</b>
+      
+    </figcaption>
+  </figure>
+</center>
+<br>
+{% if user.is_authenticated %}
+<center><button class="share" onclick="location.href='/post'" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
+{% else %}
+<center><button class="share" id="liveToastBtn" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
+<br><br>
+ <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; font-family: 'Montserrat', sans-serif;">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <strong class="me-auto">Hey Guest!</strong>
+                      <small>1 sec ago</small>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please create your account in order to share your anonyms!
+                    </div>
+                  </div>
+                </div>
+                <script>
+              var toastTrigger = document.getElementById('liveToastBtn')
+            var toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+              toastTrigger.addEventListener('click', function () {
+                var toast = new bootstrap.Toast(toastLiveExample)
+            
+                toast.show()
+              })
+            }
+            </script>
+          {% endif %}
+
+{% for post in allPosts %}
+{% if post.author != request.user %}
+<div class="container d-flex justify-content-center">
+ <div class="card toAddCardCss border-primary mb-3 bg-transparent " >
+  {% for profile in allProfiles  %}
+ 
+    {% if profile.profile_user == post.author %}
+
+
+     <div class="card-header bg-transparent">
+     <img src="{{profile.image.url}}" alt="" class="profile-img">
+
+
+    {% if post.author in friendlist %}
+     <a href="/userprofile/{{profile.id}}">{{post.author}}</a> 
+     {% else %}
+      <a href="/userprofile/{{profile.id}}">Anonymous <span style="opacity: 0.2;">(#{{post.slug}})</span></a> 
+     {% endif %}
+
+     <form action="/anonym/count/badges" method="POST">
+       {% csrf_token %}
+       <input type="hidden" name="title" value="{{post.title}}" readonly>
+<div class="btn-group" style="float:right; box-shadow: none !important; margin-top: -0.5rem;">
+  <button type="button" style="background-color:transparent; border:none; font-size: 1.2rem;" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Badges
+  </button>
+  <ul class="dropdown-menu">
+    {% if user.is_authenticated %}
+    <center><li><button type="submit" class="btn btn-primary btn-sm" name="value" value="100" style="background-color:transparent; color: transparent;background-image: linear-gradient(to left,#264ed1,#2143b6);-webkit-background-clip: text; font-weight:600; font-size:1.2rem; border:none">Buy Gold</button></a></li></center>
+    <center><li><button type="submit" class="btn btn-primary btn-sm" name="value" value="200" style="background-color:transparent; color: transparent;background-image: linear-gradient(to left,#264ed1,#2143b6);-webkit-background-clip: text; font-weight:600; font-size:1.2rem; border:none">Buy Platinum</button></a></li></center>
+    {% else %}
+    <center><li><button type="button" class="btn btn-primary btn-sm" name="value" value="100" style="background-color:transparent; color: transparent;background-image: linear-gradient(to left,#264ed1,#2143b6);-webkit-background-clip: text; font-weight:600; font-size:1.2rem; border:none">Buy Gold</button></a></li></center>
+    <center><li><button type="button" class="btn btn-primary btn-sm" name="value" value="200" style="background-color:transparent; color: transparent;background-image: linear-gradient(to left,#264ed1,#2143b6);-webkit-background-clip: text; font-weight:600; font-size:1.2rem; border:none">Buy Platinum</button></a></li></center>
+    {% endif %}
+  </ul>
+</div>
+<div>
+{% for badge in allBadges %}
+    {% if badge.post == post.title %}
+    <div class="d-flex justify-content-end">
+      <p style="color:white; font-size: 1.2rem;"><img src="static\img\gold.png" style="width:2rem;">{{badge.gold}} </p>
+      <p style="color:white; font-size: 1.2rem;"><img src="static\img\platinum.png" style="width:2rem;">{{badge.platinum}} </p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    </form>
+  </div>
+    
+   {% endif %}  
+{% endfor %}
+    
+
+
+ 
+<br>
+ 
+  <div class="card-body text-white" style="margin-top: -3rem;">
+    <h5 class="card-title">{{post.title}}</h5>
+    <h4 class="card-text">{{post.body|safe}}</h4>
+  </div>
+  <div class="card-footer bg-transparent border-primary">
+    <div class="row-icons">
+      <div class="column">
+      <form action="{% url 'like-post'%}" method='POST'>
+        <input type="hidden" name="post_id" value="{{post.pk}}">
+      {% csrf_token %}
+     {% if user.is_authenticated %}
+      {% if user not in post.liked.all%}
+          <button type="submit" id="icons" style="font-size: 1.5rem;"><i class="far fa-heart"></i> <p style="display: inline;">{{post.liked.all.count}}</p> </button>
+      {% else %}
+           <button type="submit" id="icons" style="font-size: 1.5rem;"><i class="fas fa-heart"></i> <p style="display: inline;">{{post.liked.all.count}}</p></button>
+      {% endif %}
+      {% else %}
+      <button type="submit" id="icons" style="font-size: 1.5rem;"><i class="far fa-heart"></i> <p style="display: inline;">{{post.liked.all.count}}</p> </button>
+   {% endif %}
+      </form>
+      </div>
+    {% if user.is_authenticated %}
+      <div class="column">
+        <button type="submit" id="icons"><i class="far fa-comment" style="font-size:1.5rem;"></i><a href="anonym/{{post.sno}} " style=" text-decoration: none; font-size:1.6rem; color:white; font-weight:500"> Comments</a></button>
+    </div>
+    <form action="/anonym/count/report" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="title" value="{{post.title}}" readonly>
+      <input type="hidden" name="body" value="{{post.body|safe}}" readonly>
+    <div class="column">
+     <div class="btn-group dropend">
+      <button type="button" id="icons"  data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-secondary dropdown-toggle" style="font-size: 1.5rem;"><i class="far fa-flag" style="margin-right: 1rem;"></i>Report</button>
+
+  <ul class="dropdown-menu" style="font-size: 1.5rem;">
+    <!-- Dropdown menu links -->
+    <li><button class="dropdown-item" type="submit" value="Spam" name="value">It's Spam</button></li>
+    <li><button class="dropdown-item" type="submit" value="Hate speech or symbol" name="value">Hate speech or symbol</button></li>
+    <li><button class="dropdown-item" type="submit" value="Bullying or harassment" name="value">Bullying or harassment</button></li>
+    <li><button class="dropdown-item" type="submit" value="Scam or fraud" name="value">Scam or fraud</button></li>
+    <li><button class="dropdown-item" type="submit" value="Sale of illegal goods or regulated goods" name="value">Sale of illegal goods or regulated goods</button></li>
+    <li><button class="dropdown-item" type="submit" value="Violence or dangerous organizations" name="value">Violence or dangerous organizations</button></li>
+  </ul>
+
+</div>
+  </div>
+</form>
+  {% else %}
+   <div class="column">
+    <button type="submit" id="icons"><i class="far fa-comment" style="font-size:1.5rem;"></i><a href="anonym/{{post.sno}} " style=" text-decoration: none; font-size:1.6rem; color:white; font-weight:500"> Comments</a></button>
+    </div>
+   
+    <div class="column">
+      <div class="column">
+        <div class="btn-group dropend">
+         <button type="button" id="icons"  data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-secondary dropdown-toggle" style="font-size: 1.5rem;"><i class="far fa-flag" style="margin-right: 1rem;"></i>Report</button>
+   
+     <ul class="dropdown-menu" style="font-size: 1.5rem;">
+       <!-- Dropdown menu links -->
+       <li><button class="dropdown-item" type="submit" value="action" name="value">Action</button></li>
+       <li><button class="dropdown-item" type="submit" value="action" name="value">Another action</button></li>
+       <li><button class="dropdown-item" type="submit" value="action" name="value">Something else here</button></li>
+     </ul>
+   
+   </div>
+     </div>
+  </div>
+
+  {% endif %}
+    </div>
+    
+    </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+
+{% endblock content %}

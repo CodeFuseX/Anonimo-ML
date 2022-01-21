@@ -1,0 +1,46 @@
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+.card{
+  background-image: linear-gradient(to left,#1f212d,#2e2f42);
+  color: white;
+  margin: auto;
+  margin-top: 10rem;
+  width: 30rem;
+}
+.btn{
+  background-color: #2143b6;
+  margin-top: 0.8rem;
+  border-color: transparent;
+  width: 5rem;
+  float: right;
+  margin-right: 1rem;
+}
+.chatlist-header-img img{
+  width: 18rem;
+  margin-left: 5rem;
+}
+
+  @media(max-width:998px){
+    html{
+      font-size:55%
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size:45%
+}
+.btn{
+  background-color: #2143b6;
+  margin-top: -3.5rem;
+  border-color: transparent;
+  width: 5rem;
+  float: right;
+  margin-right: 1rem;
+}
+  }
+   

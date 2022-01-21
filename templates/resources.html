@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block resourcespage %}active{% endblock resourcespage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/resources.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />  
+   <header class="header">
+      <h1 class="rss-title"><span><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span> Resources</h1> <!-- TODO: change to relevant topics -->
+    </header>
+
+  <main>
+   
+        <div class="col-md-10 mr-auto">
+          <div class="rss-content" style="background-color:transparent;">
+
+            <div class="row mb-4">
+            {% for blog in blogs %}
+              <div class="col-sm-4 my-2">
+              <div class="card">
+                  <div class="wrapper" >
+                    <div class="image">
+                    <img class="card-img-top" style="min-height:29.848rem" src="{{blog.img.url}}" alt="Card image cap">
+                    </div>
+                   </div>
+                  <div class="card-body" style="background-color:transparent">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <p class="card-text">{{blog.content}}</p>
+                    <a href="https://{{blog.link}}" target = "_blank" class="btn btn-primary">Link to the Article</a>
+                  </div>
+              </div>
+              </div>
+              
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- </div> -->
+<!-- partial -->
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+{% endblock content %}

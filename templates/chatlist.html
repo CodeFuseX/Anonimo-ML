@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/chatlist.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<br><br><br><br><br><br>
+<center>
+  <figure>
+    <div  class="chatlist-header-img">
+      <img src="{% static 'img/Elbow bump-bro.png' %}" alt="">
+    </div>
+    
+    <blockquote class="blockquote">
+      <p  style="font-size: 2rem; color: white; padding-top: 2rem;"> A candle loses nothing by lighting another candle</p>
+    </blockquote>
+    <figcaption class="blockquote-footer " style="font-size: 1rem; color: #0070d1;">
+      <b>Connect,share and help someone out</b>
+      
+    </figcaption>
+  </figure>
+</center>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+ {% for follower in allfollowers  %}
+
+ <div class="col">
+
+<div class="card">
+  <div class="row no-gutters">
+      <div class="col-sm-5">
+        <div class="card-body">
+         
+          <h4 class="card-title">{{follower.follower}}</h4>
+          
+         </div>
+      </div>
+ 
+      <div class="col-sm-7">
+        {% for current in user_names_followers %}
+        {% if current.username == follower.follower %}
+          <a href="/chat/{{current.id}}" class="btn btn-primary">Chat</a>
+        {% endif %}
+    {% endfor %}
+      
+      </div>
+    
+  </div>
+</div>
+
+</div>
+
+
+{% endfor %}
+</div>
+{% endblock content %}

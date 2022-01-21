@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load extras %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/blogpost.css' %}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <br><br><br><br><br>
+    <div class="card border-primary mb-3 bg-transparent " style="margin-left: 2%;">
+    <br>
+  {% for profile in allProfiles  %}
+ 
+    {% if profile.profile_user == post.author %}
+
+     <div class="card-header bg-transparent">
+     <img src="{{profile.image.url}}" alt="" class="profile-img">
+     {% if post.author in friendlist %}
+     <a href="/userprofile/{{profile.id}}" style="color: white;">{{post.author}}</a> 
+     {% else %}
+      <a href="/userprofile/{{profile.id}}">Anonymous</a> 
+     {% endif %}
+
+     </div>
+  
+    {% endif %}
+  {% endfor %}
+ 
+<br>
+ <br><br>
+  <div class="card-body text-white" style="margin-bottom: -5rem; margin-top:-5rem">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body|safe}}</p>
+  </div>
+
+<br><br>
+ 
+   <!-- <div class="row-icons">
+      <div class="column">
+      <form action="{% url 'like-post'%}" method='POST'>
+        <input type="hidden" name="post_id" value="{{post.pk}}">
+      {% csrf_token %}
+    </div>
+</div>-->
+
+<form action="/anonym/postComment/comment" method="post">
+  {% csrf_token %}
+  <input type="text" name="comment" placeholder="Enter your reply here">
+  <input type="hidden" name="postSno" value="{{post.sno}}" >
+  <input type="hidden" name="parentSno" value="">
+  <input type="submit" value="Submit">
+</form>
+<br>
+{% for comment in comments %}
+<div class="row my-3" id="main-reply">
+  <div class="col-md-1">
+    {% for profile in allProfiles %}
+      {% if profile.profile_user == comment.user %}
+          <img src="{{profile.image.url}}" alt="" class="profile-img">
+       {% endif %}
+    {% endfor %}
+  </div>
+   <div class="col-md-11" id="reply-main"> 
+    {% if comment.user.username in friendlist %}
+    {% for post in allPosts %}
+    {% for profile in allProfiles %}
+      {% if post.author == comment.user and profile.profile_user == comment.user%}
+        <a href="/userprofile/{{profile.id}}">{{comment.user.username}}(#{{post.slug}})</a> 
+      {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% else %}
+      <!--IF USER IS NOT IN FRIEND LIST-->
+    {% for post in allPosts %}
+    {% for profile in allProfiles %}
+      {% if post.author == comment.user and profile.profile_user == comment.user%}
+        <a href="/userprofile/{{profile.id}}">Anonymous(#{{post.slug}})</a> 
+      {% endif %}
+    {% endfor %}
+    {% endfor %}
+    <!--END OF THE ELSE PART OF THE IF STATEMENT-->
+    {% endif %}
+        <span class="badge badge-secondary ">at {{comment.timestamp}} </span>
+        <div id="reply-comment">   {{comment.comment}} </div>
+
+        <div class="reply mx-0">
+           <br> 
+          <button class="btn btn-sm btn-primary" type="button" id="reply-button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+              Reply
+          </button>
+          <div class="collapse" id="replyBox{{comment.sno}}">
+              <div class="card card-body my-2" id="reply-box">
+                  <form action="/anonym/postComment/comment" method="post">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          <label for="comment">Post a reply </label>
+                          <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
+                          <input type="hidden" name="parentSno" value="{{comment.sno}}">
+                      </div>
+                      <input type="hidden" name="postSno" value="{{post.sno}}">
+                      <button type="submit" class="btn btn-primary" id="reply-button">Submit</button>
+                  </form>
+              </div>
+          </div><br></br>
+
+          <div class="replies my-2" id="reply-main-2">
+          {% for reply in replyDict|get_val:comment.sno %}
+          <div class="row my-2">
+            <div class="col-md-1" >
+              {% for profile in allProfiles %}
+              {% if profile.profile_user == reply.user %}
+                  <img src="{{profile.image.url}}" alt="" class="profile-img">
+               {% endif %}
+            {% endfor %}
+            </div>
+            <div class="col-md-11" id="reply-main">
+              <div class="col-md-11">
+               {% for post in allPosts %}
+                {% for profile in allProfiles %}
+                  {% if post.author == reply.user and profile.profile_user == reply.user%}
+                    <a href="/userprofile/{{profile.id}}">Anonymous(#{{post.slug}}) <span class="badge badge-secondary">at {{reply.timestamp}}</span></a> 
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+           
+                <div id="reply-comment">{{reply.comment}}</div>
+              </div>
+
+            </div>
+          </div>
+          <br> 
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
