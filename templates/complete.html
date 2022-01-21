@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/settings.css' %}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <br><br><br><br><br>
+    <section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Edit Profile</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Bio</label>
+                                <input type="text" Required name="bio" value = "{{profile.bio}}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Instagram Link</label>
+                                <p style="font-size:10px; color: grey; margin-top: -8px;" >Note: Don't worry you'll be Anonymous! </p>
+                                <input type="text" Required name="instagram" value = "{{profile.instagram}}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Hobbies</label>
+                                <input type="text" Required name="Hobbies" value = "{{profile.hobbies}}" class="form-control">
+                            </div>
+                             <div class="mb-3">
+                                {% if profile.image %}
+                                <img src="{{profile.image.url}}" alt="image here">
+                                {% endif %}
+                                <label for="" class="form-label">Profile Image</label>
+                                <input type="file" Required name="image" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+{% endblock %}

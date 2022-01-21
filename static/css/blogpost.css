@@ -1,0 +1,142 @@
+html{
+  font-size: 62.5%;
+}
+
+body{
+    font-family: 'Montserrat';font-size: 2.2rem ;
+    background-color: black !important;
+  }
+  
+
+  .card{
+    min-height: 10rem;
+    font-size:1.2rem;
+    width: 50%;
+    
+  }
+  .border-primary{
+    border: none !important;
+    background-image: linear-gradient(to left,#1f212d,#2e2f42);
+  }
+  
+.profile-img{
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  float: left;
+  margin-right: 1rem;
+  margin-left: -0.3rem;
+  margin-top: 0.4rem;
+  object-fit: cover;
+  object-position: center right;
+}
+ 
+a:link { text-decoration: none; color: white; font-size: 1.5rem; font-weight: 500; }
+
+input[type=text], comment {
+  width: 70%;
+  margin-left: 2rem;
+  background-color: #0000;
+  border: none;
+  border-bottom: 0.1rem solid #bbbbbb;
+  margin-bottom: 1.2rem;
+  outline-width: 0;
+  color: #bbbbbb;
+}
+
+input:focus {
+  border-bottom: 0.2rem solid #264ed1;
+ 
+}
+
+input[type=submit], submit {
+  width: 20%;
+  height:4rem;
+  margin-left: 2rem;
+  background-image: linear-gradient(to left,#264ed1,#2143b6);
+  color: #fff;
+  border: none;
+  border-radius:1rem;
+}
+
+#main-reply{
+  margin-left: 2rem;
+}
+#reply-button{
+  background-image: linear-gradient(to left,#264ed1,#2143b6);
+  border: none;
+  width:20%;
+  height:2.5rem;
+  border-radius:1rem;
+}
+b{
+  color: #fff;
+}
+#reply-comment{
+  color: #bbbbbb;
+}
+#reply-box{
+  background-color: #0000;
+  color: #bbbbbb;
+}
+.form-control:focus{
+  background-color: #0000 !important;
+  color: #bbbbbb !important;
+  border: none !important;
+  border-bottom: 0.2rem solid #264ed1 !important;
+  box-shadow: none !important;
+
+}
+.badge-secondary{
+  background-image: linear-gradient(to left,#264ed1,#2143b6);
+  padding: 0.2rem 0rem 0.2rem 0rem;
+ } 
+  
+.card-title{
+  font-size: 1.5rem;
+}
+  
+
+
+  @media(max-width:998px){
+    html{
+      font-size:55%
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size:45%
+    }
+    .card{
+      min-height: 10rem;
+      font-size:2rem;
+      width: 80%;
+    }
+    #reply-button{
+      background-image: linear-gradient(to left,#264ed1,#2143b6);
+      border: none;
+      width:10%;
+      height:3.5rem;
+      border-radius:1rem;
+    }
+    .profile-img{
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      float: left;
+      margin-right: 1rem;
+      margin-left: -0.3rem;
+      margin-top: 0.4rem;
+      object-fit: cover;
+      object-position: center right;
+    }
+    #reply-main{
+      margin-top: -8.5%;
+      margin-left: 8%;
+    }
+    #reply-button{
+      width: 20%;
+      font-size: 1.5rem;
+    }
+   
+  }
