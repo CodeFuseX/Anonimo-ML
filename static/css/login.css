@@ -182,6 +182,10 @@ body{
   height:auto;
 }
 
+#showOrHide{
+  display: block;
+}
+
 @media(max-width:998px){
   html{
     font-size:55%
