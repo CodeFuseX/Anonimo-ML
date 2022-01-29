@@ -17,14 +17,21 @@
       <p  style="font-size: 2rem; color: white;">Sharing your feelings with someone, is not a sign of weakness</p>
     </blockquote>
     <figcaption class="blockquote-footer " style="font-size: 1.5rem; color: #0070d1;">
+<<<<<<< HEAD
       <b style="font-size: 1.8rem">Anonimo</b>
+=======
+      <b>Anonimo CHANGED!</b>
+>>>>>>> 1a52ca10ee88885661e86c16dfb45be59bbff417
       
     </figcaption>
   </figure>
 </center>
 <br>
-{% if user.is_authenticated %}
+{% if user.is_authenticated and profileCheck == True %}
 <center><button class="share" onclick="location.href='/post'" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
+{% elif user.is_authenticated and profileCheck == False %}
+<center><button class="share" onclick="location.href='/complete'" style="margin-left: 1%; color: white;"><span>Complete your Profile</span></a></button></center>
+<center><p class="profileCheckText">Complete the last step and start sharing</p></center>
 {% else %}
 <center><button class="share" id="liveToastBtn" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
 <br><br>

@@ -165,7 +165,10 @@ margin-top: 0.25rem;
   font-weight: 500;
 }
 
-
+.profileCheckText{
+  color: green;
+  font-size: 1.5rem;
+}
 
 
 @media(max-width:998px){
