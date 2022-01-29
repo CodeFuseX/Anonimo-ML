@@ -1,7 +1,10 @@
 html{
     font-size: 62.5%;
   }
-
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
   #editor{
     width: 50% !important;
   }

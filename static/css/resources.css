@@ -1,7 +1,10 @@
 html{
     font-size: 62.5%;
   }
-
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
 
 body {
     max-width: 100%;
@@ -80,16 +83,22 @@ h2{
 }
 .card-body h5{
     color: #007bff;
+    font-size: 2.5rem;
 }
 .card-body p{
     color: gainsboro;
+    font-size: 1.8rem;
 }
+.card-body a{
+    font-size: 1.4rem;
+}
+
 .rss-content {
     padding: 1.5rem;
     background: black;
     border-radius: 0.5rem;
     border: #0000;
-    
+    font-size: 1.5rem;
 }
 
 .wrapper {

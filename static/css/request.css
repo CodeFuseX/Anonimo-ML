@@ -13,7 +13,10 @@ html{
       height: 120rem;
   }
 
-
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
   ::-webkit-scrollbar {
     width: 1.2rem;
     
