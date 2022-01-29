@@ -23,8 +23,11 @@
   </figure>
 </center>
 <br>
-{% if user.is_authenticated %}
+{% if user.is_authenticated and profileCheck == True %}
 <center><button class="share" onclick="location.href='/post'" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
+{% elif user.is_authenticated and profileCheck == False %}
+<center><button class="share" onclick="location.href='/complete'" style="margin-left: 1%; color: white;"><span>Complete your Profile</span></a></button></center>
+<center><p class="profileCheckText">Complete the last step and start sharing</p></center>
 {% else %}
 <center><button class="share" id="liveToastBtn" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
 <br><br>
