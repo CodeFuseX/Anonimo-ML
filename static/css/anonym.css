@@ -7,7 +7,13 @@ body{
   font-family: 'Montserrat', sans-serif;
   background-image: linear-gradient(150deg, #2e2f42 0%, black  60%);
   background-repeat: no-repeat;
+  height: 96rem;
+
 }
+.dropdown-item{
+  font-size: 1.6rem;
+}
+
 a:link { text-decoration: none; }
 .card{
   min-height: 10rem;
@@ -52,6 +58,11 @@ a:link { text-decoration: none; }
   font-size: 2.2rem;
   font-weight: bold;
 }
+
+.card-text{
+  font-size: 1.8rem;
+}
+
 .card-footer{
   background-image: linear-gradient(to left,#264ed1,#2143b6) !important;
   border-radius: 0rem 0rem 1rem 1rem !important;
