@@ -15,7 +15,10 @@ body {
     width: 100%;
     padding-top: 6rem;
 }
-
+.navbar {
+  position: fixed;
+  height: 7%;
+}
 header h1{
     background-image: linear-gradient(to left,#264ed1,#2143b6) !important;
   -webkit-background-clip: text !important;

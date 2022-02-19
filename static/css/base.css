@@ -4,4 +4,7 @@ body{
 .dropdown-item{
     font-size:4rem;
 }
-
+.navbar {
+    position: fixed;
+    height: 7%;
+  }

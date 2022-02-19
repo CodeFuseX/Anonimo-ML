@@ -4,7 +4,10 @@ html{
   .dropdown-item{
     font-size: 1.6rem;
   }
-  
+  .navbar {
+    position: fixed;
+    height: 7%;
+  }
   #editor{
     width: 50% !important;
   }

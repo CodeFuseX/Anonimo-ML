@@ -5,6 +5,10 @@ html{
 body{
   font-family: 'Montserrat', sans-serif;
 }
+.navbar {
+  position: fixed;
+  height: 7%;
+}
 .card{
   background-image: linear-gradient(to left,#1f212d,#2e2f42);
   color: white;
