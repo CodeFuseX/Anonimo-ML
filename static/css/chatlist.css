@@ -3,27 +3,70 @@ html{
     overflow-x: hidden;
   }
 body{
+  background-image: linear-gradient(147deg, #2e2f42 0%, black 74%);
   font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  height: 96rem;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 .navbar {
   position: fixed;
   height: 7%;
 }
+
+::-webkit-scrollbar {
+  width: 1.2rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 0.3rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1c1e27;
+  border-radius: 0.3rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #28283a;
+}
+
 .card{
   background-image: linear-gradient(to left,#1f212d,#2e2f42);
   color: white;
   margin: auto;
   margin-top: 10rem;
-  width: 30rem;
+  width: 35rem;
+  height: 6rem;
+  border-radius: 0.8rem;
 }
+
+.card-title{
+  margin-top: 0.7rem;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+
 .btn{
   background-color: #2143b6;
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
   border-color: transparent;
-  width: 5rem;
+  width: 8rem;
+  height: 4rem;
   float: right;
   margin-right: 1rem;
+  font-size: 1.6rem;
+  padding-top: 0.4rem;
 }
+
+.card-title a{
+  font-size: 4rem;
+}
+
 .chatlist-header-img img{
   width: 18rem;
   margin-left: 5rem;

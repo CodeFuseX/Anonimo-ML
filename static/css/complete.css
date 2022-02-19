@@ -51,6 +51,7 @@ body{
   border : none !important;
   border-bottom: 1px solid #d1d1d1 !important;
   outline: none;
+  color: #fff !important;
 }
 .form-control input[type=text] {
   border: none !important;

@@ -9,14 +9,14 @@
 <center>
   <figure>
     <div  class="chatlist-header-img">
-      <img src="{% static 'img/Elbow bump-bro.png' %}" alt="">
+      <img src="{% static 'img/Elbow bump-bro.png' %}" alt="" style="width: 30rem; height:auto;">
     </div>
     
     <blockquote class="blockquote">
-      <p  style="font-size: 2rem; color: white; padding-top: 2rem;"> A candle loses nothing by lighting another candle</p>
+      <p  style="font-size: 2.2rem; color: white; padding-top: 2rem;"> A candle loses nothing by lighting another candle</p>
     </blockquote>
-    <figcaption class="blockquote-footer " style="font-size: 1rem; color: #0070d1;">
-      <b>Connect,share and help someone out</b>
+    <figcaption class="blockquote-footer " style="font-size: 1.6rem; color: #0070d1;">
+      <b>Connect, share and help someone out</b>
       
     </figcaption>
   </figure>
@@ -40,7 +40,7 @@
       <div class="col-sm-7">
         {% for current in user_names_followers %}
         {% if current.username == follower.follower %}
-          <a href="/chat/{{current.id}}" class="btn btn-primary">Chat</a>
+          <a href="/chat/{{current.id}}" class="btn btn-primary" style="padding-top:.8rem">Chat</a>
         {% endif %}
     {% endfor %}
       

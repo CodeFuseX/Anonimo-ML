@@ -23,6 +23,24 @@
           <a type="submit" href="/login">Sign in</a>
       </p>
     </form>
+    {% if flag == True %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <div class="toast bg-primary" data-autohide="true" style="margin-top:-70px; width=280px" id="showOrHide">
+      <div class="toast-header bg-primary">
+        <strong class="mr-auto" style="color: white;">Sucessfully Created An Account</strong>
+          <small class="text-muted text-white" >Login with you credentials</small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onClick="showOrHideDiv()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="toast-body text-white">
+      </div>
+  </div>
+    
+    {% endif %}
     
   </div>
 </div>
