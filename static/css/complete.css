@@ -1,0 +1,36 @@
+html{
+    font-size: 62.5%;
+  }
+  
+  *{
+    font-family: 'Montserrat', sans-serif; 
+     
+  }
+  body{
+    background-image: linear-gradient(147deg, #2e2f42 0%, black  50%);
+    background-repeat: no-repeat;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.3rem;
+  }
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c1e27; 
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #28283a; 
+  }
