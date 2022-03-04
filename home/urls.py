@@ -21,6 +21,7 @@ urlpatterns = [
     path('buycoins', views.buycoins, name="buycoins"),
     path('success/', views.success, name="success"),
     path('chatlist',views.chatlist, name = "chatlist"),
+    path('preload', views.preload, name="preload"),
 
 
 

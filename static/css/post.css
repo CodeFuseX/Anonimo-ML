@@ -1,12 +1,49 @@
 html{
     font-size: 62.5%;
   }
+  body {
+    background-image: linear-gradient(147deg, #2e2f42 0%, black 74%);
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 2rem;
+    height: 285rem;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+  }
+  *:focus {
+    outline: none;
+}
+
   .dropdown-item{
     font-size: 1.6rem;
   }
   .navbar {
     position: fixed;
     height: 7%;
+  }
+  .btn{
+    background-image: linear-gradient(to left,#264ed1,#2143b6);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 0.7rem;
+    line-height: 3rem;
+    width: 10rem;
+  }
+
+  .form-control{
+    background: transparent !important;
+    border-bottom: 1px solid #fff !important;
+    text-decoration: none;
+    border: transparent;
+    font-size: 1.5rem;
+    outline-width: 0 !important;
+    color: #fff !important;
+  }
+  .form-control:focus, textarea:focus, input:focus{  
+    outline: none !important;
+    border-bottom: 2px solid #264ed1 !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
   }
   #editor{
     width: 50% !important;

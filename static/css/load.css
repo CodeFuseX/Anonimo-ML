@@ -1,0 +1,40 @@
+body{
+    background-color: transparent;
+  }
+  
+  .loader-wrapper {
+      position: fixed;
+      width: 100% !important;
+      height: 62rem;
+      background-color: black;
+      z-index: 9999;
+      margin-left: -8px;
+      margin-top: -8px;
+      margin-bottom: -20px !important;
+  }
+  .after{
+    width: 120rem;
+    height: 60.67rem;
+    background-image: linear-gradient(to left, #1f212d, #2e2f42);
+    margin-left: -8px;
+    margin-top: -18px;
+    margin-bottom: -20px;
+  }
+  .loader {
+      height: 1px;
+      background-color:#264ed1;
+      position: absolute;
+      z-index: 9999;
+  }
+  
+  img {
+    position:absolute;
+    background-color: transparent !important;
+    top:50%;
+    left:50%;
+    width:600px;
+    margin-left:-300px;
+    margin-top:-300px;
+  }
+  
+  

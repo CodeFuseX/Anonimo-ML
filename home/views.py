@@ -56,7 +56,7 @@ def post(request):
         ins = Post(author=author, title=title,body=body,slug=key)
         ins.save()
         print("Data has been successfully saved!")
-        return render(request,'post.html',{'account_bal':account_bal})
+        return render(request,'load.html',{'account_bal':account_bal})
     return render(request,'post.html')
 
 def handlelogin(request):
@@ -342,3 +342,6 @@ def chatlist(request):
 
 
     return render(request, 'chatlist.html',{'allfollowers': allfollowers,'allProfiles':allProfiles,'user_names_followers':user_names_followers})
+
+def preload(request):
+    return render(request, 'load.html')

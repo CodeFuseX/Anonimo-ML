@@ -8,22 +8,22 @@
   <div class="row justify-content-md-center">
     <div class="col-md-12 col-lg-8">
     <blockquote class="blockquote">
-      <p  style="font-size: 2.5rem; color: white;">"Sharing your thoughts and problems can make you feel better"</p>
+      <p  style="font-size: 2.5rem; font-weight: bold;color: white;">"Sharing your thoughts and problems can make you feel better"</p>
     </blockquote>
-      <label style="color:  #0070d1;">Turn your thoughts into wisdom!</label>
+      <label style="color:#0070d1;">Turn your thoughts into wisdom!</label>
       <br><br>
       <form method="POST">
       {% csrf_token %}
       <div class="form-group">
-       <input type="text" class="form-control" id="content-title" aria-describedby="emailHelp" placeholder="Give a title to your thought" name="content-title">
+       <input type="text" class="form-control" id="content-title" aria-describedby="emailHelp" placeholder="Give a title to your thought" name="content-title" required>
        <br>
-         <textarea id="editor" placeholder="Clear out your mind!" name="content-area"></textarea>
+         <textarea id="editor" placeholder="Clear out your mind!" name="content-area" required></textarea>
          <br>
-         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter tags (2 to 3 max)">
+         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter tags (2 to 3 max)" required>
       </div>
       
       <br>
-      <button type="submit" class="btn  bg-transparent btn-block border-primary text-white">Submit</button>
+      <button type="submit" class="btn">Submit</button>
     </form>
     </div>
   </div>
