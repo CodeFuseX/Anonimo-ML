@@ -11,7 +11,24 @@ from django.db import IntegrityError
 from blogapp.models import Post, Like
 import os
 import razorpay
-import random
+import random, pickle
+
+#ML preprocessing
+from nltk.stem import PorterStemmer,WordNetLemmatizer
+import nltk,re
+def preprocess(data):
+    nltk.download('wordnet')
+    wo = WordNetLemmatizer()
+    #preprocess
+    a = re.sub('[^a-zA-Z]',' ',data)
+    a = a.lower()
+    a = a.split()
+    a = [wo.lemmatize(word) for word in a ]
+    a = ' '.join(a)  
+    return a
+
+
+
 
 # Create your views here.
 def home(request):
@@ -51,12 +68,35 @@ def post(request):
         body = request.POST['content-area']
         specialkey = editProfile.objects.get(profile_user= request.user)
         key = specialkey.key
+        vectorizer = pickle.load(open('E:/Anonimo/Anonimo-ML/home/vectorizer.pickle','rb'))
+        print("-------------------------------")
+        examples = body
+        a = preprocess(examples)
+        example_counts = vectorizer.transform([a])
+        model = pickle.load(open('E:/Anonimo/Anonimo-ML/home/model1.pkl','rb'))
+        prediction=model.predict(example_counts) 
+        print(prediction)
+
+
+        if prediction[0]=="suicide":
+            mentalH = "suicide"
+            print("Inside IF")
+            userState = editProfile.objects.get(profile_user= request.user)
+            user_mentalH_count = userState.count_mentalH
+            user_mentalH_count+=1
+            userState.count_mentalH= user_mentalH_count
+            userState.save()
+
+            
+
+        elif prediction[0]=="non-suicide":
+            mentalH = "non-suicide"
 
         
-        ins = Post(author=author, title=title,body=body,slug=key)
+        ins = Post(author=author, title=title,body=body,slug=key,mentalH=mentalH)
         ins.save()
         print("Data has been successfully saved!")
-        return render(request,'load.html',{'account_bal':account_bal})
+        return render(request,'anonym.html',{'account_bal':account_bal})
     return render(request,'post.html')
 
 def handlelogin(request):
@@ -343,5 +383,7 @@ def chatlist(request):
 
     return render(request, 'chatlist.html',{'allfollowers': allfollowers,'allProfiles':allProfiles,'user_names_followers':user_names_followers})
 
-def preload(request):
-    return render(request, 'load.html')
+
+
+
+

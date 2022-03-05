@@ -1,10 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'test.html' %}
 {% load static %}
 
 {% block content %}
 <link rel ="stylesheet" href="{% static 'css/post.css' %}">
+<body>
 <br><br><br><br><br>
 <div class="container">
+  
   <div class="row justify-content-md-center">
     <div class="col-md-12 col-lg-8">
     <blockquote class="blockquote">
@@ -23,15 +25,37 @@
       </div>
       
       <br>
-      <button type="submit" class="btn">Submit</button>
+      <button id="submit" type="submit" class="btn">Submit</button>
     </form>
     </div>
   </div>
 </div>
+  <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  
+    <div class="load" id="load">
+      <div class="loader-wrapper">
+      <div class="loader1">
+        <div id="fade-in" class="fade-in">
+      <img src="static\img\Anonimo1.png"
+      style="background-color: transparent !important;
+            top:50%;
+            left:50%;
+            width:600px;
+            margin-left: -30.2rem;
+            margin-top: -33.8rem"
+      />
+      </div>
+      </div>
+      </div>
+      <div class="loader2">
+      <img src="static\img\Anonimo2.png"/>
+      </div>
+    </div>
+</body>
 <script src="{% static 'js/ckeditor.js' %}"></script> 
+<script src="{% static 'js/post.js' %}"></script> 
 <script>
 CKEDITOR.replace('editor')
 </script>
-
-
 {% endblock content %}

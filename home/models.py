@@ -31,13 +31,14 @@ def filepath(request,filename):
     return os.path.join('profile/',filename)
 
 class editProfile(models.Model):
-    profile_user=models.ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE)
+    profile_user=models.ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE, unique=False)
     bio = models.TextField()
     instagram = models.CharField(max_length=155)
     hobbies = models.CharField(max_length=155)
     image = models.ImageField(upload_to=filepath, null=True, blank = True)
-    followers = models.ManyToManyField(User, blank=True, related_name="followers") 
-    key = models.CharField(max_length=150)
+    followers = models.ManyToManyField(User, blank=True, related_name="followers")
+    key = models.CharField(max_length=150, default=0)
+    count_mentalH = models.IntegerField(default=0, max_length=255)
 
 
 class FollowersCount(models.Model):

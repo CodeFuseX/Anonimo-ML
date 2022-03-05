@@ -5,7 +5,7 @@ html{
     background-image: linear-gradient(147deg, #2e2f42 0%, black 74%);
     font-family: 'Montserrat', sans-serif !important;
     font-size: 2rem;
-    height: 285rem;
+    height: 96rem;
     background-repeat: no-repeat;
     overflow-x: hidden;
   }
@@ -59,3 +59,49 @@ html{
     }
   
   }  
+
+  body{
+    background-color: transparent;
+  }
+  
+  .loader-wrapper {
+      position: fixed;
+      width: 100% !important;
+      height: 100rem;
+      background-color: black;
+      z-index: 9999;
+      margin-left: 0px;
+      margin-top: -68rem;
+      margin-bottom: 40px !important;
+  }
+  .loader2{
+    width: 200rem;
+    height: 96.4rem;
+    background-image: linear-gradient(to left, #1f212d, #2e2f42);
+    margin-left: -8px;
+    margin-top: -67.6rem;
+    margin-bottom: -20px;
+  }
+  .loader1 {
+      height: 1px;
+      background-color:#264ed1;
+      position: absolute;
+      z-index: 9999;
+
+  }
+  
+  img {
+    position:absolute;
+    background-color: transparent !important;
+    top:50%;
+    left:50%;
+    width:600px;
+    margin-left: -34rem;
+    margin-top:-65rem;
+  }
+.load{
+  display: none;
+  position: absolute;
+}
+  
+  

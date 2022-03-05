@@ -11,7 +11,7 @@ class Post(models.Model):
     body = RichTextField(blank=True, null=True)
     liked = models.ManyToManyField(User,blank=True, related_name='liked')
     slug = models.CharField(max_length=130)
-    
+    mentalH = models.CharField(max_length=100, default="suicide")
     #created = models.DateTimeField(auto_now_add=True, default=True)
 
     def __str__(self):
