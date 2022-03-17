@@ -96,7 +96,7 @@ def post(request):
         ins = Post(author=author, title=title,body=body,slug=key,mentalH=mentalH)
         ins.save()
         print("Data has been successfully saved!")
-        return render(request,'anonym.html',{'account_bal':account_bal})
+        #return render(request,'anonym.html',{'account_bal':account_bal})
     return render(request,'post.html')
 
 def handlelogin(request):

@@ -48,5 +48,5 @@ var myVar;
     
     setTimeout(function(){
         window.location.href = 'anonym';
-     }, 10000);
+     }, 9000);
 }
