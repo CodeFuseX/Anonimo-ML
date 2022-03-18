@@ -14,7 +14,8 @@ from django.contrib.auth.models import User,auth
 
 
 def anonymhome(request):
- 
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
     allfollowers = FollowersCount.objects.all().filter(user = request.user)
     
@@ -38,10 +39,10 @@ def anonymhome(request):
         else:
             profileCheck = True
 
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'account_bal':account_bal,'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'account_bal':account_bal,'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck,'mental_count':mental_count}
         return render(request, 'anonym.html', context)
     else:
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count,'mental_count':mental_count}
         return render(request, 'anonym.html', context)
 
 
@@ -73,6 +74,8 @@ def like_post(request):
 
 
 def blogPost(request,my_id):
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
     allfollowers = FollowersCount.objects.all().filter(user = request.user)
     friendlist = []
     for follower in allfollowers:
@@ -90,7 +93,7 @@ def blogPost(request,my_id):
             replyDict[reply.parent.sno]=[reply]
         else:
             replyDict[reply.parent.sno].append(reply)
-    context={'post':post, 'comments': comments, 'allProfiles':allProfiles, 'user': request.user, 'replyDict': replyDict,'friendlist':friendlist,'allPosts':allPosts}
+    context={'post':post, 'comments': comments, 'allProfiles':allProfiles, 'user': request.user, 'replyDict': replyDict,'friendlist':friendlist,'allPosts':allPosts,'mental_count':mental_count}
     return render(request, 'blogPost.html', context)
 
 def postComment(request):

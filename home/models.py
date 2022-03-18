@@ -39,6 +39,7 @@ class editProfile(models.Model):
     followers = models.ManyToManyField(User, blank=True, related_name="followers")
     key = models.CharField(max_length=150, default=0)
     count_mentalH = models.IntegerField(default=0, max_length=255)
+    approval = models.IntegerField(default=1,max_length=20)
 
 
 class FollowersCount(models.Model):

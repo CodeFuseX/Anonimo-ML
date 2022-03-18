@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block gethelp %}active{% endblock gethelp %}
+{% block content %}
+<head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Terms and Conditions</title>
+    
+    <link rel ="stylesheet" href="{% static 'css/agreement.css' %}">
+    <script type="text/javascript">
+      function validateForm(form){
+           if (form.agreement.checked==false){
+          alert("Please agree to our Terms and Conditons.");
+           return false;}
+         }
+    </script>
+  </head>
+  
+  <body class="agreement">
+    <br/>
+    <div class="flex-box-vertical flex-align-center width-threefifths">
+      <tr>
+        <td>
+          <h3>ELECTRONIC ACCESS AGREEMENT</h3>
+          <h3>Terms and Conditions</h3> This agreement sets out the terms and conditions governing your use of the online system of Agriculture Financial Services Corporation (AFSC) or Western Livestock Price Insurance (WLPIP) Online System to conduct business relating to the services
+          of AFSC by means of electronic access.
+          </br>
+          <h3>Acceptance of Terms</h3> In order to access the online system’s website to conduct business electronically, you agree that you have read and are bound by all terms and conditions of this Electronic Access Agreement, as may be amended from time to time, notwithstanding
+          any information on the online system’s website.
+          </br>
+        </td>
+      </tr>
+      <tr height="16" class="listItemTwoBg">
+        <td>
+          <FORM NAME="acceptanceform" METHOD="POST" action="approvedoc">
+              {% csrf_token %}
+            <br>
+            <input type="checkbox" name="agreement" class="agreement" value="True"> I agree to these terms and conditions <br>
+            <br><br>
+            <button type="submit" onclick="return validateForm(acceptanceform)" class="agreement">Submit</button><br>
+            <br><br>
+          </FORM>
+  </html>
+    
+  </body>
+{% endblock content %}

@@ -108,7 +108,11 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             </ul>
           </li>
           {% endif %} 
-          
+          {% if mental_count >= 3 %}
+          <li class="nav-item px-4">
+            <a class="nav-link {% block gethelp %}{% endblock gethelp %}" href="/agreement">GET HELP!</a>
+          </li>
+          {% endif %}
           {% if user.is_authenticated %}
           <li class="nav-item px-4">
             <a class="nav-link {% block logoutpage %}{% endblock logoutpage %}"href="/logout">Logout</a>

@@ -34,29 +34,33 @@ def preprocess(data):
 def home(request):
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
     if request.user.is_authenticated:
+        user_data = editProfile.objects.get(profile_user=request.user)
+        mental_count = user_data.count_mentalH
+        
         acc_bal_len = len(Bank.objects.filter(profile_user=request.user))
         if acc_bal_len>0:
             acc_bal = Bank.objects.get(profile_user=request.user)
             account_bal = acc_bal.account_bal
-            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal})
+            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
         else:
             acc_create = Bank(profile_user = request.user,account_bal=0)
             acc_create.save()
             account_bal = 0
-            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal})
+            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
     return render(request, 'home.html')
 
 def resources(request):
     blogs = Resources.objects.all()
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
-   
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
     
     if request.user.is_authenticated:
         acc_bal = Bank.objects.get(profile_user=request.user)
         account_bal = acc_bal.account_bal
-        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count,'account_bal':account_bal})
+        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
     else:
-        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count})
+        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count,'mental_count':mental_count})
 
 
 def post(request):
@@ -150,6 +154,8 @@ def signup(request):
 
 
 def settings(request):
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
    
     allPosts = Post.objects.all()
     allProfiles = editProfile.objects.all()
@@ -179,6 +185,7 @@ def settings(request):
         'allProfiles':allProfiles,
         'friend_count':friend_count,
         'account_bal':account_bal,
+        'mental_count':mental_count,
         
        
         
@@ -204,6 +211,9 @@ def complete(request):
 
 
 def edit(request,id):
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
+   
     user_profile = editProfile.objects.get(id= id)
     if request.method == "POST":
         if len(request.FILES)!=0:
@@ -216,13 +226,15 @@ def edit(request,id):
         user_profile.save()
         return redirect('settings')
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
-    context = {'user_profile':user_profile,'friend_count':friend_count, }
+    context = {'user_profile':user_profile,'friend_count':friend_count,'mental_count':mental_count }
     return render(request, 'edit.html',context) 
 
 def userProfile(request,id):
     flag = False
     if request.user.is_authenticated:
         flag = True
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
     current_user = editProfile.objects.get(id= id)
     current_user_pro = current_user.profile_user
     current_user_posts = Post.objects.all().filter(author=current_user_pro)
@@ -280,6 +292,7 @@ def userProfile(request,id):
         'friendlist':friendlist,
         'user_key':user_key,
         'flagrequest':flagrequest,
+        'mental_count':mental_count
             
             
         }
@@ -386,4 +399,17 @@ def chatlist(request):
 
 
 
+
+def agreement(request):
+    user_data = editProfile.objects.get(profile_user=request.user)
+    mental_count = user_data.count_mentalH
+    return render(request,'agreement.html',{'mental_count':mental_count})
+
+def approveDoc(request):
+    if request.method == "POST":
+        user_data = editProfile.objects.get(profile_user=request.user)
+        user_data.approval = 0
+        user_data.save()
+
+        return redirect("/")
 
