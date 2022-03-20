@@ -14,8 +14,7 @@ from django.contrib.auth.models import User,auth
 
 
 def anonymhome(request):
-    user_data = editProfile.objects.get(profile_user=request.user)
-    mental_count = user_data.count_mentalH
+    
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
     allfollowers = FollowersCount.objects.all().filter(user = request.user)
     
@@ -31,18 +30,17 @@ def anonymhome(request):
     allProfiles = editProfile.objects.all()
     allBadges = Badges.objects.all()
     if request.user.is_authenticated:
-        acc_bal = Bank.objects.get(profile_user=request.user)
-        account_bal = acc_bal.account_bal
+       
         userProfileCheck = editProfile.objects.filter(profile_user = request.user)
         if len(userProfileCheck) == 0:
             profileCheck = False
         else:
             profileCheck = True
 
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'account_bal':account_bal,'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck,'mental_count':mental_count}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck}
         return render(request, 'anonym.html', context)
     else:
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count,'mental_count':mental_count}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count}
         return render(request, 'anonym.html', context)
 
 

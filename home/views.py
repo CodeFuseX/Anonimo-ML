@@ -1,6 +1,6 @@
 from anonimo.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY
 from django.views.decorators.csrf import  csrf_exempt
-from home.models import Resources,editProfile, FollowersCount,FriendRequest,Bank
+from home.models import Resources,editProfile, FollowersCount,FriendRequest,Bank,Doctor
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User,auth
@@ -33,34 +33,33 @@ def preprocess(data):
 # Create your views here.
 def home(request):
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
+   
     if request.user.is_authenticated:
-        user_data = editProfile.objects.get(profile_user=request.user)
-        mental_count = user_data.count_mentalH
         
-        acc_bal_len = len(Bank.objects.filter(profile_user=request.user))
-        if acc_bal_len>0:
-            acc_bal = Bank.objects.get(profile_user=request.user)
-            account_bal = acc_bal.account_bal
-            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
+        user_data = len(editProfile.objects.filter(profile_user=request.user))
+   
+        if user_data!=0:
+            user_data1 = editProfile.objects.get(profile_user=request.user)
+            mental_count = user_data1.count_mentalH
+            return render (request, 'home.html',{'friend_count':friend_count,'mental_count':mental_count})
         else:
             acc_create = Bank(profile_user = request.user,account_bal=0)
             acc_create.save()
             account_bal = 0
-            return render (request, 'home.html',{'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
+            return render (request, 'home.html',{'friend_count':friend_count,})
     return render(request, 'home.html')
 
 def resources(request):
     blogs = Resources.objects.all()
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
-    user_data = editProfile.objects.get(profile_user=request.user)
-    mental_count = user_data.count_mentalH
+   
     
     if request.user.is_authenticated:
-        acc_bal = Bank.objects.get(profile_user=request.user)
-        account_bal = acc_bal.account_bal
-        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count,'account_bal':account_bal,'mental_count':mental_count})
-    else:
+        user_data = editProfile.objects.get(profile_user=request.user)
+        mental_count = user_data.count_mentalH
         return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count,'mental_count':mental_count})
+    else:
+        return render(request,'resources.html',{"blogs":blogs,'friend_count':friend_count})
 
 
 def post(request):
@@ -108,12 +107,17 @@ def handlelogin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
+        print(username)
         user = auth.authenticate(username= username , password=password)
         if user is not None:
             auth.login(request,user)
+            user_data = len(Doctor.objects.filter(doctor_username=request.user))
+            if user_data>0:
+                return redirect('/docprofile')
+        
             flag = True
-            return redirect("/")
+            
+            return redirect("/complete")
 
         else:
             flag = False
@@ -166,8 +170,6 @@ def settings(request):
     user_following = len(FollowersCount.objects.filter(follower= request.user))
     count = allProfiles.count()
     target_id =""
-    acc_bal = Bank.objects.get(profile_user=request.user)
-    account_bal = acc_bal.account_bal
     if count!=0:
         target_id = allProfiles[0].id
 
@@ -184,7 +186,6 @@ def settings(request):
         'allPosts': allPosts,
         'allProfiles':allProfiles,
         'friend_count':friend_count,
-        'account_bal':account_bal,
         'mental_count':mental_count,
         
        
@@ -397,9 +398,6 @@ def chatlist(request):
     return render(request, 'chatlist.html',{'allfollowers': allfollowers,'allProfiles':allProfiles,'user_names_followers':user_names_followers})
 
 
-
-
-
 def agreement(request):
     user_data = editProfile.objects.get(profile_user=request.user)
     mental_count = user_data.count_mentalH
@@ -412,4 +410,37 @@ def approveDoc(request):
         user_data.save()
 
         return redirect("/")
+  
+
+def doctorsignup(request):
+    if request.method == 'POST':
+        try:
+            username = request.POST['username']
+            password = request.POST['password']
+            email = request.POST['email']
+            doctor = request.POST['doctor']
+            doctorobj = Doctor()
+            doctorobj.doctor_username = username
+            doctorobj.doctype = doctor
+            doctorobj.save()
+            user = User.objects.create_user(username= username, password=password, email=email)
+            user.save()
+            print("User entered into the database successfully!")
+            args = {'user': request.user}
+            return render(request, 'signup.html',args)
+        except IntegrityError:
+
+            flag = True
+            print("already exisitng")
+         
+        #Account creation message
+        
+            args = {'user': request.user,'flag':flag}
+            return render(request, 'doctorsignup.html',args)
+    else:
+        return render(request, 'doctorsignup.html')
+
+
+
+
 

@@ -58,3 +58,12 @@ class FriendRequest(models.Model):
 class Bank(models.Model):
     profile_user = ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE )
     account_bal = models.IntegerField(default=0)
+
+
+class Doctor(models.Model):
+    doctor_username = models.CharField(max_length=1000)
+    doctype = models.CharField(max_length=1000)
+    doc_bio = models.CharField(max_length=2000)
+    doc_image = models.ImageField(upload_to=filepath, null=True, blank = True)
+    
+
