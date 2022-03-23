@@ -199,11 +199,16 @@ input.form-control:focus {
   text-align: center;
   float: left;
   padding: 0.1rem;
-
- 
-
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 2rem !important;
+  width: 9rem;
+
+}
 #btncomplete{
   width: 25rem;
   height: 4rem;

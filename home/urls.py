@@ -1,4 +1,4 @@
-from typing import ValuesView
+
 from django.http.request import validate_host
 from django.urls import path,include
 from home import views
@@ -22,12 +22,9 @@ urlpatterns = [
     path('success/', views.success, name="success"),
     path('chatlist',views.chatlist, name = "chatlist"),
     path('agreement', views.agreement, name="agreement"),
-    path('approvedoc', views.approveDoc,name="approveDoc")
-
-
-
-    
-
-
+    path('approvedoc', views.approveDoc,name="approveDoc"),
+    path('doctorsignup', views.doctorsignup,name="doctorsignup"),
+    path('doctorprofile', views.doctorprofile,name="doctorprofile"),
+    path('doctorsetting', views.doctorsetting,name="doctorsetting"),
 ]
 

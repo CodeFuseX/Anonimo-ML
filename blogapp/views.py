@@ -14,8 +14,7 @@ from django.contrib.auth.models import User,auth
 
 
 def anonymhome(request):
-    user_data = editProfile.objects.get(profile_user=request.user)
-    mental_count = user_data.count_mentalH
+    
     friend_count = len(FriendRequest.objects.filter(to_user = request.user))
     allfollowers = FollowersCount.objects.all().filter(user = request.user)
     
@@ -31,22 +30,18 @@ def anonymhome(request):
     allProfiles = editProfile.objects.all()
     allBadges = Badges.objects.all()
     if request.user.is_authenticated:
-        acc_bal = Bank.objects.get(profile_user=request.user)
-        account_bal = acc_bal.account_bal
+       
         userProfileCheck = editProfile.objects.filter(profile_user = request.user)
         if len(userProfileCheck) == 0:
             profileCheck = False
         else:
             profileCheck = True
 
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'account_bal':account_bal,'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck,'mental_count':mental_count}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count, 'allfollowers':allfollowers,'friendlist':friendlist,'profileCheck':profileCheck}
         return render(request, 'anonym.html', context)
     else:
-        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count,'mental_count':mental_count}
+        context = {'allPosts': allPosts, 'allProfiles':allProfiles, 'allBadges':allBadges,'friend_count':friend_count}
         return render(request, 'anonym.html', context)
-
-
-
 
 @login_required
 def like_post(request):
@@ -71,11 +66,9 @@ def like_post(request):
         like.save()
         return redirect('anonym')
 
-
-
 def blogPost(request,my_id):
-    user_data = editProfile.objects.get(profile_user=request.user)
-    mental_count = user_data.count_mentalH
+    
+        
     allfollowers = FollowersCount.objects.all().filter(user = request.user)
     friendlist = []
     for follower in allfollowers:
@@ -93,7 +86,7 @@ def blogPost(request,my_id):
             replyDict[reply.parent.sno]=[reply]
         else:
             replyDict[reply.parent.sno].append(reply)
-    context={'post':post, 'comments': comments, 'allProfiles':allProfiles, 'user': request.user, 'replyDict': replyDict,'friendlist':friendlist,'allPosts':allPosts,'mental_count':mental_count}
+    context={'post':post, 'comments': comments, 'allProfiles':allProfiles, 'user': request.user, 'replyDict': replyDict,'friendlist':friendlist,'allPosts':allPosts}
     return render(request, 'blogPost.html', context)
 
 def postComment(request):
@@ -114,7 +107,6 @@ def postComment(request):
          
         
     return redirect("anonym")
-
 
 def badges(request):
     if request.method == "POST":
@@ -177,7 +169,6 @@ def badges(request):
         
     return redirect('anonym')
             
-
 def report(request):
     if request.method=="POST":
         title = request.POST.get('title')
@@ -186,5 +177,6 @@ def report(request):
         ins = Report(post_title=title, post_content=content,reason=value)
         ins.save()
         return redirect('anonym')
+
 
 

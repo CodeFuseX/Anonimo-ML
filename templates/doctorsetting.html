@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block profilepage %}active{% endblock profilepage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/settings.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<br><br><br><br>
+{% for docs in docData %}
+   <!-- <img src="{{doc.doc_image.url}}" alt="" class="profile-img-main" > -->
+   <h3 class="username" style="color: white; text-align: center;">{{docs.doctor_username}}</h3>
+    <div class="edit-button">
+      <button  id = "btnedit" type="submit" class="btn btn-primary" onclick ="window.location.href='/edit/{{target_id}}'"><i class="fas fa-user-edit"><label>Edit Profile</label></i></button>
+    </div>
+  </div>
+<br>
+<div class="about-me">
+    <div class="card-about text-center" style="background-color:transparent;">
+        <div class="card-body">
+            <h4 style="font-weight: 700; color: white;">About me</h4>
+         <p style="color: white;">{{docs.doc_bio}}</p>  
+        </div>
+      </div>
+</div>
+{% endfor %}
+
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+{% endblock content %}

@@ -22,8 +22,6 @@ class Resources(models.Model):
     content = models.TextField()
     link=models.CharField(max_length=500)
 
-
-
 def filepath(request,filename):
     old_filename = filename
     timeNow = datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
@@ -49,7 +47,6 @@ class FollowersCount(models.Model):
     def __str__(self):
         return self.user
         
-
 class FriendRequest(models.Model):
     from_user = models.CharField(max_length=1000)
     to_user = models.CharField(max_length=1000)
@@ -58,3 +55,16 @@ class FriendRequest(models.Model):
 class Bank(models.Model):
     profile_user = ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE )
     account_bal = models.IntegerField(default=0)
+
+class Doctor(models.Model):
+    doctor_username = models.CharField(max_length=1000)
+    doc_bio = models.CharField(max_length=2000)
+    doc_image = models.ImageField(upload_to=filepath, null=True, blank = True)
+    doc_qualification = models.CharField(max_length=200, null=True)
+    doc_exp = models.CharField(max_length=150, null=True)
+    doc_type = models.CharField(max_length=25, null=True)
+
+    def __str__(self):
+        return self.doctor_username
+    
+

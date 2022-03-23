@@ -45,7 +45,7 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 }
 </script>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
-    <div class="container-fluid" style="background:background: linear-gradient(to left, rgb(31, 33, 45), rgb(46, 47, 66)) !important;">
+    <div class="container-fluid" >
       <a class="navbar-brand" style="font-size: 2rem;" href="/">ANONIMO</a>
       <button
         class="navbar-toggler"
@@ -101,7 +101,7 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
               {{request.user.username}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/settings">Settings</a></li>
+              <li><a class="dropdown-item" href="/settings">Settings</a><a class="dropdown-item" href="/doctorsetting">Settings</a> </li>
               <li><a class="dropdown-item" href="/buycoins">Buy coins<span class="badge badge-danger" style="margin-top:-2px;margin-left: 5px;background-image: linear-gradient(to left,#264ed1,#2143b6);color:white;">{{account_bal}}</span></a></li>
               <li><a class="dropdown-item" href="/request">Requests<span class="badge badge-danger" style="margin-top:-2px;margin-left: 5px;background-image: linear-gradient(to left,#264ed1,#2143b6);color:white;">{{friend_count}}</span></a></li>
                <li><a class="dropdown-item" href="/chatlist">Chats<span class="badge badge-danger" style="margin-top:-2px;margin-left: 5px;background-image: linear-gradient(to left,#264ed1,#2143b6);color:white;">{{friend_count}}</span></a></li>
@@ -115,7 +115,7 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
           {% endif %}
           {% if user.is_authenticated %}
           <li class="nav-item px-4">
-            <a class="nav-link {% block logoutpage %}{% endblock logoutpage %}"href="/logout">Logout</a>
+            <a class="nav-link {% block logoutpage %}{% endblock logoutpage %}" href="/logout">Logout</a>
           {% else %}
           <li class="nav-item px-4">
             <a class="nav-link {% block loginpage %}{% endblock loginpage %}" href="/login">Login</a>
