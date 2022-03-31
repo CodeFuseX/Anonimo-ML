@@ -1,0 +1,274 @@
+html{
+    font-size: 62.5%;
+  }
+  
+  body {
+    background-image: linear-gradient(147deg, #2e2f42 0%, black 74%);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    height: 285rem;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c1e27;
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #28283a;
+  }
+  
+  .navbar {
+    position: fixed;
+    height: 7%;
+  }
+  
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
+  .carousel {
+    margin-top: 1rem;
+  }
+  .carousel-inner {
+    height: 10rem;
+  }
+  .carousel-caption {
+    color: #fff;
+    top: 50%;
+    
+  }
+  
+  .testimonials {
+    padding: 10rem 0;
+  }
+  .testimonials h3 {
+    margin-bottom: 2rem;
+  }
+  .testimonials .card {
+    transition: 0.5s;
+    margin-top: 6rem;
+    background-image: linear-gradient(to left, #1f212d, #2e2f42);
+  }
+  .testimonials .card i {
+    color: #ffffff;
+    width: 7.5rem;
+    height: 7.5rem;
+    line-height: 7.5rem;
+    margin: -4rem auto 0 auto;
+  }
+  .testimonials .card-body {
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+  }
+  .text {
+    display: inline-block;
+    font-size: 1rem;
+    background: #fff;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    color: #111;
+    letter-spacing: 0.2rem;
+    transition: 0.2s;
+  }
+  
+  .ex a {
+    margin-left: 50%;
+  }
+  .featured-services {
+    font-family: "Montserrat";
+    font-size: 2.2rem;
+  
+  }
+  
+  .featured-services .icon-box {
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(to left, #1f212d, #2e2f42);
+  
+    transition: all 0.3s ease-in-out;
+    border-radius: 1.5rem;
+    z-index: 1;
+  }
+  
+  .featured-services .icon-box::before {
+    content: "";
+    position: absolute;
+    background: #cbe0fb;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 100%;
+    transition: all 0.3s;
+    z-index: -1;
+  }
+  
+  .featured-services .icon-box:hover::before {
+    background: white;
+    top: 0;
+    border-radius: 0rem;
+  }
+  
+  .featured-services .icon {
+    margin-bottom: 1.5rem;
+  }
+  
+  .featured-services .icon i {
+    font-size: 4.8rem;
+    line-height: 1;
+    color: transparent;
+    background-image: linear-gradient(to left, #264ed1, #2143b6);
+    -webkit-background-clip: text;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .featured-services .title {
+    font-weight: 700;
+    margin-bottom: 0rem;
+    font-size: 2rem;
+    color: white;
+  }
+  .featured-services .button {
+    text-decoration: none;
+  }
+  .title {
+    color: #007bff;
+  }
+  
+  .featured-services .description {
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #bebebe;
+  }
+  .featured-services .icon-box:hover .icon i {
+    color: black;
+  }
+  .featured-services .icon-box:hover .title a,
+  .featured-services .icon-box:hover .title {
+    color: black;
+  }
+  .featured-services .icon-box:hover .title a,
+  .featured-services .icon-box:hover .description {
+    color: black;
+  }
+  
+  .card {
+    border-radius: 1.5rem;
+    
+  }
+  .banner-image {
+    background-size: 100rem;
+    background-repeat: no-repeat;
+    margin: 7rem 0rem 0rem 72rem;
+    padding: 0rem 0rem 0rem 0rem;
+  }
+  
+  button.button {
+    background-color: transparent;
+    /* position: absolute;
+  left:-740rem;
+  top:500rem; */
+    border: none;
+    /* margin: 0rem 800rem; */
+    text-align: center;
+    font-size: 0rem;
+    text-decoration: none;
+  }
+  
+  .featured-services-button .title {
+    font-weight: 700;
+    size: 3rem;
+    color: white;
+    margin: 0rem 0rem -3rem;
+  }
+  
+  .title {
+    color: #007bff;
+  }
+  
+  .featured-services-button .icon-box:hover .icon i {
+    color: black;
+  }
+  .featured-services-button .icon-box:hover .title a,
+  .featured-services .icon-box:hover .title {
+    color: black;
+  }
+  .featured-services-button .icon-box:hover .title a,
+  .featured-services .icon-box:hover .description {
+    color: black;
+  }
+  
+  /*---------------RESPONSIVE----------------------*/
+  @media screen and (min-device-width: 1200rem) and (max-device-width: 1600rem) and (-webkit-min-device-pixel-ratio: 1) {
+    /*-----TESTING PURPOSES----*/
+    .carousel-caption {
+      color: white;
+    }
+  
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .list-unstyled{
+    font-size: 1.2rem;
+  }
+  .sec-head{
+    font-size: 2rem;
+  }
+  
+  @media(max-width:998px){
+    html{
+      font-size:55%
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size:45%
+    }
+    .featured-services {
+      font-family: "Montserrat";
+      font-size: 2.2rem;
+      width: 80%;
+      justify-content: center;
+      margin-left: 10%;
+    
+    }
+    #about{
+      width: 80%;
+      margin-left: 10%;
+    }
+    .card {
+      border-radius: 1.5rem;
+      width: 80%;
+      margin-left: 10%;
+      
+    }
+    .featured-services .title {
+      font-weight: 700;
+      margin-bottom: 0rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      color: white;
+    }
+  
+  }

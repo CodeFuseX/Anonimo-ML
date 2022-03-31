@@ -1,0 +1,107 @@
+html{
+    font-size: 62.5%;
+  }
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: #131521;
+    flex-direction: column;
+    font-family: 'Montserrat' !important;
+    font-size: 2.2rem; 
+
+}
+
+.navbar {
+    position: fixed;
+    height: 7%;
+}
+
+.header {
+    padding: 2rem 5%;
+    background: #1f212d;
+    color: #ffff;
+    position:fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+
+.messages-area {
+    height: 100%;
+    min-height: 70vh;
+    overflow-y: auto;
+    padding: 4%;
+    background: #131521;
+    color: #1f212d;
+    padding-bottom: 1rem;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Montserrat';
+
+}
+
+#message-input {
+    padding: 1.5rem 3rem;
+    margin: 2rem 1rem 2rem 0rem;
+    width: 90%;
+    border-radius: 5rem;
+    border:none;
+    text-decoration: none;
+    font-size: 2.2rem;
+    background-color: #1f212d;
+    color: #ffff;
+    font-family: 'Montserrat';
+}
+
+
+
+.message.left{
+    text-align: left;
+    color: #aaa;
+}
+.message.right {
+    text-align: right;
+    color: #ccc;
+}
+.message .content{
+    background: #1f212d;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    max-width: 80%;
+    display: inline-block;
+}
+.message .sent-by{
+    font-size:1.8rem;
+    padding-top: 1rem;
+}
+
+#send-btn{
+    color: white;
+    font-size: 4rem;
+    margin-top: 2.2rem;
+}
+@media(max-width:998px){
+    html{
+      font-size:55%
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size:45%
+    }
+ 
+   
+  }

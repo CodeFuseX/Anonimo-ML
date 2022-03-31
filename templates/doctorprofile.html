@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/complete.css' %}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <br><br><br><br><br>
+
+    <section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Update Profile</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Bio</label>
+                                <input type="text" Required name="bio" class="form-control" value = "{{user_profile.bio}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Type</label><br>
+                                <select name="doctype" id="doctype" style="font-size: 2rem !important;">
+                                <option value="MHP" >Mental Health Professional</option>
+                                <option value="PHP">Physical Health Professional</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Years of Experience</label>
+                                <input type="text" Required name="exp" class="form-control" value = "{{user_profile.bio}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Qualifications</label>
+                                <input type="text" Required name="qualification" class="form-control" value = "{{user_profile.bio}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Profile Image</label><br><br>
+                                <!-- <img src="{{user_profile.doc_image.url}}" alt="" class="profile-img"> -->
+                                
+                                <input type="file"  name="image" class="form-control">
+                            </div><br>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+{% endblock %}

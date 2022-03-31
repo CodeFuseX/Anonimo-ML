@@ -1,0 +1,214 @@
+html{
+    font-size: 62.5%;
+  }
+  
+  *{
+    font-family: 'Montserrat', sans-serif; 
+     
+  }
+  body{
+    background-image: linear-gradient(147deg, #2e2f42 0%, black  50%);
+    background-repeat: no-repeat;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.3rem;
+  }
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c1e27; 
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #28283a; 
+  }
+  .profile-img-main{
+    margin-top: 5%;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center right ;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+  .profile-img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    float: left;
+    margin-right: 1rem;
+    margin-left: 0.7rem;
+    margin-top: 0.4rem;
+    object-fit: cover;
+    object-position: center right;
+  }
+  
+  #btnedit{
+    border-radius: 1rem;
+    background-image: linear-gradient(to left,#264ed1,#2143b6);
+    border: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 11.5rem;
+    height: 3rem;
+    font-size: 1.16rem;
+    white-space: nowrap;
+  }
+  
+  #btnedit label{
+    font-weight: 600 !important;
+    margin-left: 0.5rem;
+    color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .card-header a:hover{
+    color: #264ed1 !important;
+  }
+  
+  .card-title{
+    color: transparent;
+    background-image: linear-gradient(to left,#264ed1,#2143b6);
+    -webkit-background-clip: text;
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+  }
+  
+  .column {
+    float: left;
+    width: auto;
+    padding: 0rem;
+    height: 3rem; /* Should be removed. Only for demonstration */
+    background-color: transparent;
+  }
+  
+  #icons{
+    display: inline-block;
+    color: white;
+    background-color: #0000;
+    border: none;
+    margin-top: 0.25rem;
+  }
+  
+  .card{
+    min-height: 10rem;
+    border-radius: 1rem !important;
+    border: none !important;
+    font-size: 1.5rem;
+    margin: auto;
+    width: 50%;
+    
+  }
+  
+  .card-footer{
+    background-image: linear-gradient(to left,#264ed1,#2143b6) !important;
+    border-radius: 0rem 0rem 1rem 1rem !important;
+    border: none !important;
+    
+  }
+  
+  .card-header{
+    border: none !important;
+    font-size:2.2rem;
+    margin-bottom: 1rem;
+    padding-left: 0.8rem;
+    padding-top: 1rem;
+  }
+  
+  .card-header a{
+    color: #e0dede;
+    font-size: 2.2rem;
+    text-decoration: none;
+    margin-top: 1%;
+    float: left;
+    /*padding: 10rem 10rem 10rem 10rem;
+    border-radius: 50rem;*/  
+  }
+  
+  #icons:hover{
+    color: #1f212d;
+  }
+  
+  #labels{
+      color: white;
+      background-color: #0000;
+      font-size:1.6rem;
+      padding: 0rem 1rem 0rem 0rem;
+      font-weight: 500;
+  }
+  
+  .border-primary{
+      border: none;
+      background-image: linear-gradient(to left,#1f212d,#2e2f42);
+  }
+  
+  .about-me{
+    width: 50%; 
+    margin: auto;
+    font-size: 1.5rem;
+  }
+  
+  .edit-button{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .username{
+    margin-top: 2%;
+  }
+  .content{
+    color:white;
+    display: flex;
+    width: 18%;
+    margin: auto;
+   
+  }
+  .col{
+    text-align: center;
+    float: left;
+    padding: 0.1rem;
+  
+   
+  
+  }
+  
+    @media(max-width:998px){
+      html{
+        font-size:55%;
+      }
+    }
+    @media(max-width:768px){
+      html{
+        font-size:45%;
+      }
+     .about-me{
+       width: 90%;
+     }
+     .col{
+       padding: 1.8rem;
+       margin: auto;
+       margin-left: -3rem;
+     }
+     .card{
+       width: 80% !important;
+     }
+    }

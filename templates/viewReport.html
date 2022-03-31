@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/viewReport.css' %}">
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% for report in allReports %}
+<div class="container d-flex justify-content-center">
+    <div class="card toAddCardCss border-primary mb-3 bg-transparent " >
+     <div class="card-header bg-transparent">
+        <img src="{{user_image.url}}" alt="" class="profile-img">
+   
+   
+       
+        <a href="/userprofile/10">{{report.post_username}}</a> 
+        
+   
+        <form action="/anonym/count/badges" method="POST">
+          <input type="hidden" name="csrfmiddlewaretoken" value="DRTL26aUKCl4sUnVA69YZBbqSQIBBABUrNbFHp38xNk3py5mIzJOH2e5hZSd19vU">
+          <input type="hidden" name="title" value="IDK what to do " readonly>
+   <div class="btn-group" style="float:right; box-shadow: none !important; margin-top: -0.5rem;">
+   </div>
+   <div>
+       </div>
+     </div>
+   <br>
+     <div class="card-body text-white" style="margin-top: -3rem;">
+       <h5 class="card-title">{{report.post_title}} </h5>
+       <h4 class="card-text"><p>{{report.post_content | safe}}</p>
+   </h4>
+     </div>
+     <div class="card-footer bg-transparent border-primary">
+       <div class="row-icons">
+           <div class="column">
+               IDHR DAAL KUCH BHI BUTTONS
+           </div> 
+
+       </div>
+       
+       </div>
+   </div>
+   </div>      
+{% endfor %}
+{% endblock content %}

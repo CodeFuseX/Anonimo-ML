@@ -1,0 +1,100 @@
+html{
+  font-size: 62.5%;
+}
+
+*{
+    font-family: 'Montserrat', sans-serif;
+     
+  }
+  body{
+      background-image: linear-gradient(147deg, #2e2f42 0%, black  60%);
+      background-repeat: no-repeat;
+      background-size:cover;
+      height: 120rem;
+  }
+
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+    
+  }
+  .navbar {
+    position: fixed;
+    height: 7%;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.3rem;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c1e27; 
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #28283a; 
+  }
+ h1{
+    color: #fff;
+    margin-bottom: 4rem;
+    margin-left: 2.5rem;
+}
+h3{
+    color: #bbbbbb;
+    margin-left: -70%;
+    padding-top: 2rem;
+    margin-bottom: -2rem;
+    
+}
+#btnedit{
+    border-radius: 1rem;
+    background-image: linear-gradient(to left,#264ed1,#2143b6);
+    border: none;
+    border-radius:50%;
+    font-weight: 600;
+    font-family: 'Montserrat'!important;
+    margin-top: -3rem;
+    margin-left: -40%;
+    float: right;
+    font-size: 4rem;
+    padding: 0rem 0.9rem 0rem 1rem;
+  }
+#btnedit:focus{
+    border: none;
+    box-shadow: none !important;
+}
+#btnedit:hover{
+    color: #2143b6;
+    background-image: linear-gradient(to left,#ffffff,#ffffff);
+  
+}
+  #btnedit, #btnfollow{
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'Montserrat'!important; 
+}
+
+.follow-button{
+  margin-right: 20rem;
+}
+
+@media(max-width:998px){
+  html{
+    font-size:55%
+  }
+}
+@media(max-width:768px){
+  html{
+    font-size:45%
+  }
+  .follow-button{
+    margin-top: 1rem;
+    margin-right: 10rem;
+  }
+}

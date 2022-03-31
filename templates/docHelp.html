@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block anonympage %}active{% endblock anonympage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/userprofile.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+
+    <center><img src="{{current_user.image.url}}" alt="" class="profile-img-main"></center>
+   
+    <h3 class="username" style="color: white; text-align: center; ">{{ current_user.profile_user}}</h3>
+   
+    
+    <form action="/followers_count" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="user" value="{{current_user_pro}}" readonly>
+    <input type="hidden" name="follower" value="{{user.username}}" readonly>
+    
+    
+    <div class="follow-button">
+     <center><a href="/doctor/startsession/{{target_id}}" blank="_target"><button id = "btnedit" class="btn btn-primary" style="margin-left: 0.5rem;"><label>Start Session</label></a></center>
+
+     </div>
+  </form>
+<br>
+<div class="about-me" style="width: 50%; margin-left: 25%;">
+    <div class="card-about-me text-center" style="background-color: transparent;">
+        <div class="card-body">
+            <h2 style="font-weight: 700; color: white;">About me</h2>
+         <p style="color: white;">{{current_user.bio}}</p>  
+        </div>
+      </div>
+</div>
+<br>
+<center><h2 style="font-weight: 700; color: white;">User's Posts</h2></center>
+<br>
+{% for post in CAllposts %}
+
+<div class="card border-primary mb-3 bg-transparent ">
+
+     
+ 
+    <div class="card-header bg-transparent"> 
+    <img src="{{current_user.image.url}}" alt="" class="profile-img">
+    
+    <a href="">Anonymous(#{{post.slug}})</a>
+    </div>
+     
+  
+ 
+<br>
+ 
+  <div class="card-body text-white" style="margin-top: -50px;">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body|safe}}</p>
+  </div>
+  <div class="card-footer bg-transparent border-primary">
+    <div class="row-icons">
+      <div class="column">
+      <form action="{% url 'like-post'%}" method='POST'>
+        <input type="hidden" name="post_id" value="{{post.pk}}">
+      {% csrf_token %}
+      {% if user not in post.liked.all%}
+          <button type="submit" id="icons"><i class="far fa-heart"></i></button><label id="labels">{{post.liked.all.count}}</label>
+      {% else %}
+           <button type="submit" id="icons"><i class="fas fa-heart"></i></button><label id="labels">{{post.liked.all.count}}</label>
+      {% endif %}
+   
+      </form>
+      </div>
+      <div class="column">
+       <button type="submit" id="icons"><i class="far fa-comment" style="font-size:1.5rem;"></i><a href="/anonym/{{post.sno}} " style=" text-decoration: none; font-size:1.6rem; color:white; font-weight:500"> Comments</a></button>
+    </div>
+   
+ 
+    </div>
+    
+    </div>
+</div>
+
+{% endfor %}
+
+ <script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+
+{% endblock content %}
