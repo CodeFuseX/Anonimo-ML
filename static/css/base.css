@@ -1,0 +1,29 @@
+body{
+    font-family: 'Montserrat';
+}
+.dropdown-item{
+    font-size:4rem;
+}
+.navbar {
+    position: fixed;
+    height: 7%;
+  }
+  ::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c1e27;
+    border-radius: 0.3rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #28283a;
+  }

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/sessions.css' %}">
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css
+">
+{% if session_present == True %}
+
+<div class="row justify-content-center">
+  <div class="column" style="background-color: transparent">
+    <div class="grid-container">
+    <div class="col-sm-4">
+      <div class="card toAddCardCss border-primary mb-1 bg-transparent " >
+       <div class="card-header bg-transparent">
+          <h1 style="color: white; text-align: center;">Report</h1>             
+          <form action="/anonym/count/badges" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="DRTL26aUKCl4sUnVA69YZBbqSQIBBABUrNbFHp38xNk3py5mIzJOH2e5hZSd19vU">
+     <div>
+         </div>
+       </div>
+     <br>
+       <div class="card-body text-white">
+        <center><div class="circle">{{report_left}}/{{report_count}}</div></center>
+<br>
+       <center><a href="/doctor/report" blank="_target"><button id = "btnedit" class="btn btn-primary" style="border-radius: 10px"><label style="color: white;">Submit New Report</label></a></center>
+       </div>
+       <br>
+
+     </div>
+     </div>
+    </div>
+     
+     <br>
+     <div class="col-sm-4">
+        <div class="card toAddCardCss border-primary mb-3 bg-transparent " >
+         <div class="card-header bg-transparent">
+            <h1 style="color: white; text-align: center;">Sessions</h1>
+           
+            
+       
+            <form action="/anonym/count/badges" method="POST">
+              <input type="hidden" name="csrfmiddlewaretoken" value="DRTL26aUKCl4sUnVA69YZBbqSQIBBABUrNbFHp38xNk3py5mIzJOH2e5hZSd19vU">
+            
+       
+       <div>
+           </div>
+         </div>
+       <br>
+         <div class="card-body text-white">
+          <center><div class="circle">{{session_left}}/{{session_count}}</div></center>
+<br>
+         <center><p style="font-size: 1.8rem;">Make full use of the sessions</p></center>
+         </div>
+         <br>
+  
+
+       </div>
+       </div>
+  </div>
+
+
+  <div class="column" style="background-color: transparent">
+    <div class="col-sm-4">
+      <div style="height: 50.3rem" class="card toAddCardCss border-primary mb-3 bg-transparent" >
+        <br><div class="card-header bg-transparent">
+          <img src="{{doc_image.url}}" alt="" class="profile-img">
+     
+          
+         
+          <a style="font-size: 2.7rem" href="/userprofile/10">{{doc_assigned}}</a> 
+         
+          
+     
+          <form action="/anonym/count/badges" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="DRTL26aUKCl4sUnVA69YZBbqSQIBBABUrNbFHp38xNk3py5mIzJOH2e5hZSd19vU">
+          
+     
+     <div>
+         </div>
+       </div>
+     <br>
+       <div class="card-body text-white" style="margin-top: -2rem;">
+        <h4 style="font-size: 2rem; margin-left: 1rem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, commodi eveniet in rerum omnis repellendus facilis, possimus ratione </h4>
+        <br><br>
+        <a href="/chat/{{doc_details_id}}" blank="_target"><button id = "btnedit" class="btn btn-primary" style="margin-left: 1rem; width: 10rem; border-radius: 10px"><label style="color: white;">Chat</label></a>
+      </div>
+       <br>
+     </div>
+    </div>
+  </div>
+</div>
+
+
+  {% else %}
+    <div class="row justify-content-center"  >
+      <div class="card1 bg-transparent" style="color: white; font-size: 4rem; text-align: center; font-weight: bold">
+        <h1>No Sessions Available</h1>
+        <p>Share some Posts</p>
+        
+        <center><button class="share" onclick="location.href='/post'" style="margin-left: 1%; color: white;"><span>Share your thoughts </span></a></button></center>
+
+    </div>
+
+    
+    
+    
+  {% endif %}
+
+{% endblock content %}

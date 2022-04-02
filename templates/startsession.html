@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/startsession.css' %}">
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card" style="margin-top:5rem">
+                    <div class="card-header">
+                        <h2 class="fw-bold" style="font-size:3rem; margin-top: 1.2rem">Session Form</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" Required name="patientname" value="{{username}}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">No. of sessions required</label>
+                                <input type="text" Required name="noofsessions" class="form-control">
+                            </div>
+                             
+                            <button type="submit" style="font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.8rem" class="btn btn-primary">Start</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

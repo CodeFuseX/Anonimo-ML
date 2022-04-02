@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block homepage %}active{% endblock homepage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/home.css' %}">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <style>
+      .banner-image {
+        background-image: url({% static 'img/untitled1.png' %});
+      }
+      .container{
+        width: 100%%;
+        height: 650px;
+    }
+      .box{
+        width: 100%;
+        height: 100%;            
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.8;  /* for demo purpose  */
+    }
+      .box1{
+      z-index: 999;
+      width:1000px;
+      overflow:hidden;
+      float:right;
+      padding-left: 400px;
+      padding-top:50px;
+    }
+
+        
+</style>
+  {% comment %} <div class="banner-image w-80 vh-100 "></div> {% endcomment %}
+<section id="featured-services-button" class="featured-services"> 
+  <div class="embed-responsive embed-responsive-16by9">
+
+    <div class="container">
+      <div class="box">        
+        <iframe src='https://my.spline.design/macbookprocopy-fd13721197da5470e4fdd750ac0401ca/' frameborder='0' width='100%' height='650px'></iframe>
+      </div>
+      <div class="box1">
+        <div>
+        <div class="col align-self-center">    
+          <div class="d-flex flex-column align-self-center ">
+            <div class="col-md-12 col-sm-10 mt-4 " style="padding-top:2rem">
+              <center><h1 class="title" style="font-size:5rem; padding-top:5rem;">Connect, Talk <small class="text-muted">and</small>
+                Share</h1></center>
+                <br>
+            <p class="text-center" style="color: white; font-size:2.5rem;"><b>Connect</b> with strangers, <b>Talk</b> to them and <b>Share</b> your thoughts and opinions.</p>
+            </div>
+                </div>
+        
+        <div class="btn-wrapper d-flex justify-content-center">
+          {% if user.is_authenticated %}
+          {% if doc_present == False %}
+            <button class="button my-4" onclick="location.href='/post'" style="font-family: 'Montserrat', sans-serif;">
+              
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" style="background-image: linear-gradient(to left,#264ed1,#2143b6);"> 
+                <h4 class="title">Share your thoughts</h4>
+              </div></button>
+            
+              {% endif %}
+            {% else %}
+            <button class="button my-4 w-50" type="button" id="liveToastBtn" style="font-family: 'Montserrat', sans-serif;">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" style="background-image: linear-gradient(to left,#264ed1,#2143b6);"> 
+              <h4 class="title">Share your thoughts</h4>
+            </div></button>
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; font-family: 'Montserrat', sans-serif;">
+              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Hey Guest!</strong>
+                <small>1 sec ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Please create your account in order to share your anonyms!
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+   
+        
+      
+      
+              
+
+              
+                <script>
+              var toastTrigger = document.getElementById('liveToastBtn')
+            var toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+              toastTrigger.addEventListener('click', function () {
+                var toast = new bootstrap.Toast(toastLiveExample)
+            
+                toast.show()
+              })
+            }
+            </script>
+                  {% endif %}
+              </div>
+      </div>
+    </div>
+
+
+
+</section>
+<br><br><br>
+<center><h2 style="color: white; font-size: 4rem;">Features</h2></center>
+<br><br>
+<section id="featured-services" class="featured-services" style="font-family: 'Montserrat', sans-serif;">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+         <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="fas fa-feather-alt fa-6x"></i></div>
+              <br>
+              <h4 class="title">Write</h4>
+              <p class="description">When you feel like nobody’s there to listen and nobody
+                understands, you can write here</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="fas fa-user-shield fa-6x"></i></div>
+              <br>
+              <h4 class="title" >Anonymous</h4>
+              <p class="description">Share your thoughts and ideas Anonymously without the fear of getting judged by the society.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="fas fa-hands-helping fa-6x"></i></div>
+              <br>
+              <h4 class="title">Help</h4>
+              <p class="description">Connect to people with same interests.Here’s a community of people ready to listen with open minds
+                and kind hearts - no shame, no judgement.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="fas fa-certificate fa-6x"></i></div>
+              <br>
+              <h4 class="title">Badges</h4>
+              <p class="description">Gift badges to people who deserves to be rewarded.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+<div id="about" class="about-area area-padding" style="margin-top: -13%;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2 style="color: white; font-size: 4rem;">About Anonimo</h2>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <!-- single-well start-->
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="well-left">
+          <div class="single-well">
+            <a href="#" class="d-flex justify-content-center">
+              <img src="static\img\Adesign.png" class="img-fluid" style=" margin-top: 5rem; ">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- single-well end-->
+      <div class="col-md-6 col-sm-12 col-xs-12 text-white">
+        <div class="well-middle">
+          <div class="single-well">
+              <h4 class="sec-head" style="color: #2143b6;">Why Anonimo ?</h4>
+                <p>This platform is for people to connect with each other and express themselves according to their convenience. The lockdown and quarantine have made us isolated from the entire world, so through this platform, we are trying to bridge that gap. This website is created to drive open conversations among their target group around mental health. So that they know they’re not the only people going through the hardships of the COVID-19 pandemic.</p>
+            <ul style="list-style-type: none;">
+              <li >
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Anonymous Sharing of thoughts
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Interaction with other users with similar views
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Blogs and resources provided by our admins
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Posting thoughts and suggestions
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Interative comments
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End col-->
+    </div>
+  </div>
+</div>
+
+<div class="testimonials text-center" style="margin-top: -9%; margin-bottom: 150%;">
+
+  <div class="container">
+     <h2 style="color: white; font-size: 4rem;">Experts on Anonimo</h2>
+    <br>
+  
+       <div class="row" style="margin-top: -4%;">
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6); 
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Prioritize Self Care, Find What Works. Though challenging with so many competing needs, it is critical to focus on yourself whenever you can.<br> Mental health is health.</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Dr. Pooja Lakshmin
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6);
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Boundaries are not just acceptable, they are necessary protecting our mental health and focusing on self care should include being aware of the triggers that make us feel worse</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Dr. Meltzer Brody</cite></footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6);
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Be Nicer To Yourself and Others. Many experts interviewed said that its important right now to understand that you are not going to be as productive as you were and that is OK</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Jessica Dyer LCSW</cite></footer>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/home.js' %}" type="text/javascript"></script> 
+{% endblock content %}

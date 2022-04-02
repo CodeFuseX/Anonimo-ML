@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block homepage %}active{% endblock homepage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/dochome.css' %}">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <style>
+      .banner-image {
+        background-image: url({% static 'img/untitled1.png' %});
+      }
+</style>
+  {% comment %} <div class="banner-image w-80 vh-100 "></div> {% endcomment %}
+<section id="featured-services-button" class="featured-services"> 
+  <div class="row py-5">
+
+    
+    <div class="col-md-6 col-sm-12 mt-4">
+      <img src="{% static 'img/untitled1.png' %}" alt="" class="homeHeroImg img-fluid">
+    </div>
+
+    <div class="col-md-6 col-sm-12 mt-4 ">    
+      <div class="d-flex flex-column ">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="font-family: 'Montserrat', sans-serif;">
+            <div class="explore-button ex" style="margin-left: 3%; "></div>
+            <br><br><br>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-caption">
+                  <h3 style="font-size: 2rem"> "You only live once, but if you do it right, once is enough"</h3>
+                  <p style="color: #2143b6">Mae West</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption">
+                  <h3 style="font-size: 2rem">Strive not to be a success, but rather to be of value.</h3>
+                  <p style="color: #2143b6">Alastin Einstein</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption">
+                  <h3 style="font-size: 2rem">Those who dare to fail miserably can achieve greatly.</h3>
+                  <p style="color: #2143b6">Ronald F. Kennedy</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption">
+                  <h3 style="font-size: 2rem">The opposite of love is not hate; it’s indifference.</h3>
+                  <p style="color: #2143b6">Elie Wiesel</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption">
+                  <h3 style="font-size: 2rem">The opposite of love is not hate; it’s indifference.</h3>
+                  <p style="color: #2143b6">Elie Wiesel</p>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+              <div class="btn-wrapper d-flex justify-content-center">
+                {% if user.is_authenticated %}
+                  <button class="button my-4" onclick="location.href='/chatlist'" style="font-family: 'Montserrat', sans-serif;">
+                    
+                  <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" style="background-image: linear-gradient(to left,#264ed1,#2143b6);"> 
+                      <h4 class="title">Go to Chatroom</h4>
+                    </div></button>
+                  {% else %}
+                  <button class="button my-4 w-50" type="button" id="liveToastBtn" style="font-family: 'Montserrat', sans-serif;">
+                  <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" style="background-image: linear-gradient(to left,#264ed1,#2143b6);"> 
+                    <h4 class="title">Go to Chatroom</h4>
+                  </div></button>
+                  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; font-family: 'Montserrat', sans-serif;">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <strong class="me-auto">Hey Guest!</strong>
+                      <small>1 sec ago</small>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please create your account in order to share your anonyms!
+                    </div>
+                  </div>
+                </div>
+                <script>
+              var toastTrigger = document.getElementById('liveToastBtn')
+            var toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+              toastTrigger.addEventListener('click', function () {
+                var toast = new bootstrap.Toast(toastLiveExample)
+            
+                toast.show()
+              })
+            }
+            </script>
+                  {% endif %}
+              </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>
+<br><br>
+<center><h2 style="color: white; font-size: 4rem;">Features</h2></center>
+<br><br>
+<section id="featured-services" class="featured-services" style="font-family: 'Montserrat', sans-serif;">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+         <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="fas fa-feather-alt fa-6x"></i></div>
+              <br>
+              <h4 class="title">Write</h4>
+              <p class="description">When you feel like nobody’s there to listen and nobody
+                understands, you can write here</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="fas fa-user-shield fa-6x"></i></div>
+              <br>
+              <h4 class="title" >Anonymous</h4>
+              <p class="description">Share your thoughts and ideas Anonymously without the fear of getting judged by the society.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="fas fa-hands-helping fa-6x"></i></div>
+              <br>
+              <h4 class="title">Help</h4>
+              <p class="description">Connect to people with same interests.Here’s a community of people ready to listen with open minds
+                and kind hearts - no shame, no judgement.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="fas fa-certificate fa-6x"></i></div>
+              <br>
+              <h4 class="title">Badges</h4>
+              <p class="description">Gift badges to people who deserves to be rewarded.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+<br><br><br><br>
+
+
+<div id="about" class="about-area area-padding" style="margin-top: -3%;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2 style="color: white; font-size: 4rem;">About Anonimo</h2>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <!-- single-well start-->
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="well-left">
+          <div class="single-well">
+            <a href="#" class="d-flex justify-content-center">
+                <img src="{% static 'img/Adesign1.png' %}"  class="img-fluid" style=" margin-top: 5rem; ">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- single-well end-->
+      <div class="col-md-6 col-sm-12 col-xs-12 text-white">
+        <div class="well-middle">
+          <div class="single-well">
+              <h4 class="sec-head" style="color: #2143b6;">Why Anonimo ?</h4>
+                <p>This platform is for people to connect with each other and express themselves according to their convenience. The lockdown and quarantine have made us isolated from the entire world, so through this platform, we are trying to bridge that gap. This website is created to drive open conversations among their target group around mental health. So that they know they’re not the only people going through the hardships of the COVID-19 pandemic.</p>
+            <ul style="list-style-type: none;">
+              <li >
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Anonymous Sharing of thoughts
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Interaction with other users with similar views
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Blogs and resources provided by our admins
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Posting thoughts and suggestions
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #2143b6;"></i>  Interative comments
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div
+      <!-- End col-->
+    </div>
+  </div>
+</div>
+
+<div class="testimonials text-center" style="margin-top: -2%; margin-bottom: 150%;">
+
+  <div class="container">
+     <h2 style="color: white; font-size: 4rem;">Experts on Anonimo</h2>
+    <br>
+  
+       <div class="row" style="margin-top: -4%;">
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6);
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Prioritize Self Care, Find What Works. Though challenging with so many competing needs, it is critical to focus on yourself whenever you can.<br> Mental health is health.</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Dr. Pooja Lakshmin
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6);
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Boundaries are not just acceptable, they are necessary protecting our mental health and focusing on self care should include being aware of the triggers that make us feel worse</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Dr. Meltzer Brody</cite></footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="background-color:#1f212d">
+          <i class="fa fa-quote-left fa-2x card-img-top rounded-circle mt-5" style="color: transparent; background-image: linear-gradient(to left,#264ed1,#2143b6);
+-webkit-background-clip: text;" aria-hidden="true"></i>
+          <div class="card-body blockquote">
+            <p class="card-text text-white">Be Nicer To Yourself and Others. Many experts interviewed said that its important right now to understand that you are not going to be as productive as you were and that is OK</p>
+            <footer class="blockquote-footer text-white-50"><cite title="Source Title">Jessica Dyer LCSW</cite></footer>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/home.js' %}" type="text/javascript"></script> 
+{% endblock content %}

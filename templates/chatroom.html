@@ -1,0 +1,104 @@
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/chatroom.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        a, a:hover, a:focus, a:active {
+            text-decoration: none;
+            color: white;
+        }
+        </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="header"><a href="/chatlist" style="text-decoration:none">Back to ChatPage</a>
+                
+                <div style="float: right;"><span><h3>Chatting with {{ other_user.username }}</span></h3></div>
+               </div>
+    <div class="messages-area">
+        {% for message in messages %}
+        <div class="message 
+        {% if message.sender == request.user %}right{% else %}left{% endif %}
+        ">
+            <div class="sent-by">{{ message.sender.username }}</div>
+            <div class="content">{{ message.message }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="input-area">
+        <input type="text" placeholder="Type A Message..." id="message-input">
+        <i id="send-btn" class="fas fa-paper-plane"></i>
+    </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    let message_send_btn = document.getElementById("send-btn");
+    let message_input = document.getElementById("message-input");
+    function send_message() {
+        let message = message_input.value;
+        if (message === "") {
+            return;
+        }
+        message_input.value = "";
+        fetch("{% url 'chatroom-ajax' other_user.id %}",
+            {
+                method: "POST",
+                credentials: 'same-origin',
+                headers: {
+                    "Content-Type": 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(message)
+            }
+        ).then(e => e.json()).then(messages => {
+            for (message of messages) {
+                construct_message(message);
+            }
+        });
+    }
+
+    function load_messages() {
+        fetch("{% url 'chatroom-ajax' other_user.id %}")
+            .then(e => e.json())
+            .then(messages => {
+                console.log(messages)
+                for (message of messages) {
+                    construct_message(message);
+                }
+            })
+    }
+
+    function construct_message(message){
+        let messages_container = document.querySelector(".messages-area");
+        let class_name = "left"
+        if (message.sent){
+            class_name = "right"
+        }
+        let div = document.createElement("div");
+        div.classList.add("message", class_name);
+        div.innerHTML = `
+        <div class="sent-by">${ message.sender }</div>
+            <div class="content">${ message.message }</div>
+        `
+        messages_container.appendChild(div);
+        div.scrollIntoView()
+    }
+    message_send_btn.addEventListener('click', send_message);
+    setInterval(load_messages, 1000);
+</script>
+
+
+{% endblock content %}

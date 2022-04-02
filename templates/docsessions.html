@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/docsessions.css' %}">
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<div class="row">
+  
+  {% for patient in  all_patient_details%}
+  {% for session in session_details  %}
+  {% for report in allR %}
+  <div class="col-sm-3">
+        <div class="card toAddCardCss border-primary mb-3 bg-transparent " >
+          <br>
+         <div  class="card-header bg-transparent">
+            <img src="{{patient.image.url}}" alt="" class="profile-img">
+          <a style="font-size: 2.7rem" href="/help/{{patient.id}}">{{patient.profile_user}}</a> 
+    <div>
+      </div>
+      </div>
+    
+      <div class="card-body text-white">
+        
+     
+      <!--<div class="circle">1/{{session.required_sessions}}</div>-->
+     
+        
+        <h1 style="text-align: center; font-size: 2rem">No of Sessions</h1>
+        <form action="/doctor/getDetails" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="patientusername" value="{{patient.profile_user}}" >
+          <div class="slidecontainer">
+            <input type="range" min="1" max="{{session.required_sessions}}" value="{{session.completed_sessions}}" class="slider" id="myRange" name="rangevalue">
+            <p>Value: <span id="demo"  ></span></p>
+
+          </div>
+          
+          <script>
+          var slider = document.getElementById("myRange");
+          var output = document.getElementById("demo");
+          output.innerHTML = slider.value;
+          
+          slider.oninput = function() {
+            output.innerHTML = this.value;
+          }
+          </script>
+  
+  <h1 style="text-align: center; font-size: 2rem">No of Reports</h1>
+          
+  <div class="slidecontainer">
+    <input type="range" min="1" max="{{report.required_reports}}" value="{{report.completed_reports}}" class="slider" id="myRange1" name="reportrangevalue">
+    <p>Value: <span id="demo1"></span></p>
+  
+<div class="button-grid" style="display: inline-block; margin-top: 2rem; margin-bottom: 0rem">
+  <button type="submit" class="btn btn-primary" style="width: 8.2rem; height: 4rem; font-size: 14px; margin-right: 0.5rem;border-radius: 10px">Submit</button>
+  <button type="button" class="btn btn-primary" style="width: 8.2rem; height: 4rem; font-size: 14px; margin-left: 0.5rem;border-radius: 10px" onclick="window.location.href = '/doctor/viewReports/{{patient.id}}'">Report</button>
+<br><br><br>  
+</div>
+  </div>
+  
+  <script>
+  var slider = document.getElementById("myRange1");
+  var output1 = document.getElementById("demo1");
+  output1.innerHTML = slider.value;
+  
+  slider.oninput = function() {
+    output1.innerHTML = this.value;
+  }
+  </script>
+
+        </form>
+        
+
+
+      <!--<div class="circle">5/10</div>-->
+         
+         </div>
+         <br>
+       </div>
+       </div>
+       {% endfor %}
+       {% endfor %}
+       {% endfor %}
+
+       {% comment %} <div class="col-sm-3">
+        <div class="card toAddCardCss border-primary mb-3 bg-transparent " >
+         <div class="card-header bg-transparent">
+            <img src="https://images.unsplash.com/photo-1648432060879-00ba15f25d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" alt="" class="profile-img">
+       
+            
+           
+            <a href="/userprofile/10">finesseRK</a> 
+           
+            
+       
+            <form action="/anonym/count/badges" method="POST">
+              <input type="hidden" name="csrfmiddlewaretoken" value="DRTL26aUKCl4sUnVA69YZBbqSQIBBABUrNbFHp38xNk3py5mIzJOH2e5hZSd19vU">
+            
+       
+       <div>
+           </div>
+         </div>
+       <br>
+         <div class="card-body text-white">
+        
+          <div class="circle">5/10</div>
+          <div class="circle">5/10</div>
+         
+         </div>
+         <br>
+       </div>
+      </div> {% endcomment %}
+
+{% endblock content %}

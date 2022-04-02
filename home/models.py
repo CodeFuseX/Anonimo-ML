@@ -1,0 +1,72 @@
+from operator import mod
+from django.db import models
+from django.contrib.auth.models import User
+import datetime
+import os
+
+from django.db.models.fields.related import ForeignKey
+# Create your models here.
+class SignUp(models.Model):
+    username = models.CharField(max_length=250)
+    password = models.CharField(max_length=30)
+    email = models.EmailField(max_length=30)
+
+    def __str__(self):
+        return self.username
+
+    empAuth_objects = models.Manager()
+
+
+class Resources(models.Model):
+    img = models.ImageField(upload_to="blog-img/", default="")
+    title = models.CharField(max_length=155)
+    content = models.TextField()
+    link=models.CharField(max_length=500)
+
+def filepath(request,filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename = "%s%s" % (timeNow, old_filename)
+    return os.path.join('profile/',filename)
+
+class editProfile(models.Model):
+    profile_user=models.ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE, unique=False)
+    bio = models.TextField()
+    instagram = models.CharField(max_length=155)
+    hobbies = models.CharField(max_length=155)
+    image = models.ImageField(upload_to=filepath, null=True, blank = True)
+    followers = models.ManyToManyField(User, blank=True, related_name="followers")
+    key = models.CharField(max_length=150, default=0)
+    count_mentalH = models.IntegerField(default=0, max_length=255)
+    approval = models.IntegerField(default=0,max_length=20)
+    doc_assigned = models.IntegerField(default=0,max_length=20)
+
+
+class FollowersCount(models.Model):
+    follower = models.CharField(max_length=1000)
+    user = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.user
+        
+class FriendRequest(models.Model):
+    from_user = models.CharField(max_length=1000)
+    to_user = models.CharField(max_length=1000)
+        
+
+class Bank(models.Model):
+    profile_user = ForeignKey(User, blank=True, null=True, on_delete= models.CASCADE )
+    account_bal = models.IntegerField(default=0)
+
+class Doctor(models.Model):
+    doctor_username = models.CharField(max_length=1000)
+    doc_bio = models.CharField(max_length=2000)
+    doc_image = models.ImageField(upload_to=filepath, null=True, blank = True)
+    doc_qualification = models.CharField(max_length=200, null=True)
+    doc_exp = models.CharField(max_length=150, null=True)
+    doc_type = models.CharField(max_length=25, null=True)
+
+    def __str__(self):
+        return self.doctor_username
+    
+

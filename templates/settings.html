@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block profilepage %}active{% endblock profilepage %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/settings.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+{% if count == 0 %}
+<br><br><br><br><br>
+<center><div class="card mb-3" style="width: 60%;" >
+
+  <img src="{% static "img/Wall post-amico.png" %}" class="card-img-top">
+  <div class="card-body">
+    <h4 class="card-title">Hey {{request.user}} !</h4>
+    <p class="card-text">Seems you have'nt completed your profile, just a few details and you're all set.</p>
+    <button id = "btncomplete" type="button" onclick ="window.location.href='/complete'" class="btn btn-primary">Complete</button>
+  </div>
+  
+</div>
+</center>
+{% else %}
+
+  {% for profile in allProfiles %}
+
+  
+   <img src="{{profile.image.url}}" alt="" class="profile-img-main" >
+   <h3 class="username" style="color: white; text-align: center;">{{ user.username}}</h3>
+  
+    <div class="edit-button">
+      <button  id = "btnedit" type="submit" class="btn btn-primary" onclick ="window.location.href='/edit/{{target_id}}'"><i class="fas fa-user-edit"><label>Edit Profile</label></i></button>
+    </div>
+   
+    <div class="content">
+      <div class="col">
+          <h2>{{posts_counts}}</h2>
+          <p>Posts</p>
+        </div>
+        <div class="col">
+          <h2>{{user_followers}}</h2>
+          <p>Followers</p>
+        </div>
+        <div class="col">
+          <h2>{{user_following}}</h2>
+          <p>Following</p>
+        </div>
+  </div>
+
+<br>
+<div class="about-me">
+    <div class="card-about text-center" style="background-color:transparent;">
+        <div class="card-body">
+            <h4 style="font-weight: 700; color: white;">About me</h4>
+         <p style="color: white;">{{profile.bio}}</p>  
+        </div>
+      </div>
+</div>
+{% endfor %}
+<br>
+<center><h4 style="font-weight: 700; color: white;">My Posts</h4></center>
+<br>
+{% for post in allPosts %}
+{% if post.author == request.user %}
+{% for profile in allProfiles  %}
+ 
+{% if profile.profile_user == request.user %}
+ <div class="card border-primary mb-3 w-50">
+ <div class="card-header" style="color: white;"> 
+ <img src="{{profile.image.url}}" alt="" class="profile-img"><a href="/userprofile/{{post.sno}}/{{profile.id}}">{{post.author}}</a> </div>
+  
+    
+ {% endif %}
+ {% endfor %}
+ 
+<br>
+ 
+  <div class="card-body text-white" style="margin-top: -5rem;">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body|safe}}</p>
+  </div>
+  <div class="card-footer bg-transparent border-primary">
+    <div class="row-icons">
+      <div class="column">
+      <form action="{% url 'like-post'%}" method='POST'>
+        <input type="hidden" name="post_id" value="{{post.pk}}">
+      {% csrf_token %}
+      {% if user not in post.liked.all%}
+          <button type="submit" id="icons"><i class="far fa-heart"></i></button><label id="labels">{{post.liked.all.count}}</label>
+      {% else %}
+           <button type="submit" id="icons"><i class="fas fa-heart"></i></button><label id="labels">{{post.liked.all.count}}</label>
+      {% endif %}
+   
+      </form>
+      </div>
+      <div class="column">
+        <button type="comment" id="icons"><i class="far fa-comment"> <a href="anonym/{{post.sno}} " style="text-decoration: none;font-family: 'Montserrat' !important; font-size:16px; color: white; font-weight:500;"> Comments</a></i></button>
+    </div>
+   
+   
+    </div>
+    
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+   <script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/756186333c.js" crossorigin="anonymous"></script>
+{% endblock content %}
