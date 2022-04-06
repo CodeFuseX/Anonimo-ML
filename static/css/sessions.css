@@ -34,7 +34,7 @@ body{
 .column {
   float: center;
   width: 27.5%;
-  margin-left: 8.5rem;
+  margin-left: -0.7rem;
   padding: 10px;
   height: 50rem; /* Should be removed. Only for demonstration */
 }
@@ -85,6 +85,7 @@ margin-bottom: 20rem;
 }
 .card-header a:hover{
   color: #264ed1 !important;
+  border: none !important;
 }
 
 .circle {
@@ -146,7 +147,7 @@ margin-bottom: 20rem;
 }*/ 
 
 .border-primary{
-  border: none;
+  border: none !important;
   background-image: linear-gradient(to left,#1f212d,#2e2f42);
 }
 button.button {

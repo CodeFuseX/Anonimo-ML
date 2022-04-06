@@ -27,5 +27,8 @@ urlpatterns = [
     path('doctorprofile', views.doctorprofile,name="doctorprofile"),
     path('doctorsetting', views.doctorsetting,name="doctorsetting"),
     path('help/<int:id>', views.help, name="userprofile"),
+    path('doc1', views.doc1, name="doc1"),
+    path('doc2',views.doc2, name="doc2"),
+    path('doc3', views.doc3, name="doc3"),
 ]
 

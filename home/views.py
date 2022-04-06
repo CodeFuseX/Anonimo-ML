@@ -535,3 +535,13 @@ def help(request,id):
 
 
     return render(request,'docHelp.html',context)
+
+def doc1(request):
+    return render(request, 'doc1.html')
+
+def doc2(request):
+    return render(request, 'doc2.html')
+
+def doc3(request):
+    return render(request, 'doc3.html')
+

@@ -54,6 +54,7 @@ header .material-icons{
     margin: 3rem;
     border-bottom: 0.4rem solid linear-gradient(to left,#264ed1,#2143b6);
     background-color: #ffff;
+    color: #ffff;
 }
 
 .rss-title span .fa fa-lightbulb-o {
@@ -97,12 +98,15 @@ h2{
     height: 50rem !important;
     width: 80%;
     margin-left: 40%;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
 }
 .card-body {
     background: black;
     border: none;
     font-size: 1.5rem;
     height: 50rem;
+    border-radius: 2rem;
 }
 .card-body h5{
     color: #007bff;

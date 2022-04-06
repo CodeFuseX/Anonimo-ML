@@ -98,6 +98,7 @@ def docsession(request):
     for patient in allPatients:
         allPatients_details = User.objects.get(username = patient.patient_username)
         allP = editProfile.objects.get(profile_user = allPatients_details.id)
+        
         allR = ReportDoc.objects.filter(patient_username = patient.patient_username)
         all_patient_details.append(allP)
         session_details.append(patient)

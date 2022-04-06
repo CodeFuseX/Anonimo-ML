@@ -8,6 +8,7 @@ body{
   background-image: linear-gradient(150deg, #2e2f42 0%, black  60%);
   background-repeat: no-repeat;
   height: auto;
+  min-height: 96rem;
 }
 
 .navbar {
